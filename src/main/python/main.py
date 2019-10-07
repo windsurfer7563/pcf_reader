@@ -102,7 +102,9 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
        
         nodes = []
         for line in fp:
-            line = line[:-1]
+            if  line[-1] == '\n':
+                line = line[:-1]
+            
             if self.is_root_element(line):
                 root = self.get_new_root(line)
                 nodes.append(root)
