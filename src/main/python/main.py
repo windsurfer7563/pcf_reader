@@ -11,6 +11,9 @@ from contextlib import contextmanager
 from PyQt5.QtGui import QGuiApplication, QCursor
 from PyQt5 import QtCore
 
+from config import Configuration
+
+
 @contextmanager
 def wait_cursor():
     try:
@@ -65,6 +68,10 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
         filenames = self.get_file_names(path) 
         self.statusBar.showMessage('Found {} PCF files'.format(len(filenames)))
 
+        if len(filenames) == 0:
+            QMessageBox.critical(None, 'Error', "PCF files does not found in selected dir", QMessageBox.Ok)
+            return
+        
         with wait_cursor():
         
             df = pd.DataFrame()
@@ -97,7 +104,7 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
         try: 
             fp = open(file_name, 'rt') 
         except FileNotFoundError:
-            QMessageBox.critical(None, 'Error', "FileNotFound: {}".format(file_name), QMessageBox.Ok)
+            QMessQMessageBox.critical(None, 'Error', "FileNotFound: {}".format(file_name), QMessageBox.Ok)
             return None
        
         nodes = []
@@ -119,10 +126,7 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
                 value_idx += 1
             root["inner_values"][k] = v
 
-            #if root["name"] == ["WELD"] and len(root["inner_values"]) > 9:
-            #    print(root)
-
-        
+                    
         return nodes
 
     def create_df(self, nodes):
@@ -145,6 +149,9 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
             "PL_MISC-SPEC2":"",
             "PL_MISC-SPEC3":"",
             "PL_MISC-SPEC4":"",
+            "ITEM-ATTRIBUTE1":"",
+            "START-CO-ORDS": "" 
+
         }
 
         pipeline_values = self.get_pipeline_values(nodes, pipeline_values)
@@ -157,6 +164,9 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
         for e in elements:
             row = self.get_empty_row()
             
+            for k,v in header_values.items():
+                row[k] = v
+
             for k,v in pipeline_values.items():
                 row[k] = v
             
@@ -164,16 +174,10 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
             for k,v in e["inner_values"].items():
                 if 'POINT' in k:
                     x,y,z,dn = self.get_coords_from_endpoint(v)
-                    if idx == 1:
-                        row['UNITS-CO-ORDS'] = header_values['UNITS-CO-ORDS']
-
                     row['X' + str(idx)] = x
                     row['Y' + str(idx)] = y
                     row['Z'+ str(idx)] = z
                     row['DN' + str(idx)] = dn
-                    if idx == 1:
-                        row['UNITS-BORE'] = header_values['UNITS-BORE']
-                    
                     idx += 1
                     
                 else:
@@ -251,15 +255,17 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
 
 
     def get_columns_to_show(self, columns):
-        new_cols = ['PIPELINE-REFERENCE', 'PL_PIPING-SPEC', 'PL_MISC-SPEC2', 'X1','Y1','Z1',"UNITS-CO-ORDS",
-        "DN1","UNITS-BORE", "WELD-TYPE","CATEGORY","COMPONENT-IDENTIFIER","UID"]
+        cols_from_ini = config.weld_attributes
         
-        for c in new_cols:
+        final_cols = []
+
+        for c in cols_from_ini:
             if c not in columns:
                 QMessageBox.critical(None, 'Error', "Column not found in data: {}".format(c), QMessageBox.Ok)
-                return columns
+            else:
+                final_cols.append(c)    
         
-        return new_cols
+        return final_cols
 
     def excel_export(self):
         if self.df is not None:
@@ -273,5 +279,12 @@ if __name__ == '__main__':
     appctxt = AppContext()                      # 4. Instantiate the subclass
     stylesheet = appctxt.get_resource('styles.qss')
     appctxt.app.setStyleSheet(open(stylesheet).read())
+
+    config = Configuration(appctxt)
+        
+    if len(config.weld_attributes) == 0:
+        QMessageBox.critical(None, 'Error', "Error in ini file", QMessageBox.Ok)
+        sys.exit(-1)   
+    
     exit_code = appctxt.run()                   # 5. Invoke run()
     sys.exit(exit_code)

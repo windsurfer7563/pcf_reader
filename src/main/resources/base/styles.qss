@@ -1,8 +1,8 @@
 QLabel {
-    min-width: 20em;
-    max-width: 30em;
+    min-width: 10em;
+    max-width: 20em;
     min-height: 4em;
-    font-style: italic;
+    //font-style: italic;
 }
 
 QPushButton {

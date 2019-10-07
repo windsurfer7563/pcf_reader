@@ -2,6 +2,7 @@ import unittest
 from main import AppContext
 import os
 import pandas as pd
+from config import Configuration
 
 class MainTests(unittest.TestCase):
     def __init__(self, *args, **kwargs):
@@ -84,6 +85,9 @@ class MainTests(unittest.TestCase):
         self.assertListEqual(["42341.0000","86940.9000","101222.1800", "0.7500"], [x,y,z,dn])    
 
 
+    def test_get_weld_attributes_from_config(self):
+        config = Configuration(self.app)
+        self.assertIn("PIPELINE-REFERENCE", config.weld_attributes)
 
 if __name__ == '__main__':
     unittest.main()
