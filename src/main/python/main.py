@@ -29,7 +29,7 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
         window = QMainWindow()
         version = self.build_settings['version']
         window.setWindowTitle("PCF-Reader v" + version)
-        window.resize(800, 600)
+        window.resize(1024, 600)
         self.statusBar = QStatusBar()
         window.setStatusBar(self.statusBar)
         self.statusBar.setUpdatesEnabled(True)
@@ -55,16 +55,21 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
         centralWidget.setLayout(layout)
 
         window.setCentralWidget(centralWidget)
-        
+        #just for not to show empty window
+        self.df = pd.DataFrame(columns=[c.upper() for c in self.config.column_names])
+        model = PandasModel(self.df)
+        self.tableView.setModel(model)
+
         window.show()
 
         return self.app.exec_()                 # 3. End run() with this line
 
     def get_folder_name_and_process(self):
+        
         path = QFileDialog.getExistingDirectory(caption = "Select directory with *.pcf files")
         if not path:
             return
-        
+        df = pd.DataFrame()
         filenames = self.get_file_names(path) 
         self.statusBar.showMessage('Found {} PCF files'.format(len(filenames)))
 
@@ -72,26 +77,24 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
             QMessageBox.critical(None, 'Error', "PCF files does not found in selected dir", QMessageBox.Ok)
             return
         
+
         with wait_cursor():
-        
-            df = pd.DataFrame()
             for no, f_name in enumerate(filenames):
                 short_name = f_name.split('\\')[-1]
                 self.statusBar.showMessage('Parsing {} of {}, filename:  {}'.format(str(no+1), 
                                         str(len(filenames)), short_name))
                 QtCore.QCoreApplication.processEvents()
-                nodes = self.parse_file(f_name)
-                if nodes is not None:
-                    if df is not None:
-                        df = pd.concat([df, self.create_df(nodes)], sort=False, ignore_index = True)
-                
-            self.df = df[self.get_columns_to_show(df.columns)]
+                self.nodes = self.parse_file(f_name)
+                if self.nodes is not None:
+                    one_file_df = self.create_one_file_df()
+                    df = df.append(one_file_df, ignore_index = True)
+            
+            self.df = self.final_formatting(df)
+        
         
         model = PandasModel(self.df)
         self.tableView.setModel(model)
         self.statusBar.showMessage('Elements retrieved')
-
-
 
     def get_file_names(self, folder_name):
         
@@ -109,163 +112,219 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
        
         nodes = []
         for line in fp:
-            if  line[-1] == '\n':
-                line = line[:-1]
-            
+            line = line[:-1] if line[-1] == '\n' else line
+                            
             if self.is_root_element(line):
                 root = self.get_new_root(line)
                 nodes.append(root)
-                value_idx = 2
                 continue
             
             # processing inner element
             k,v = self.get_key_value(line)
-            
-            if k in root["inner_values"].keys():
-                k = k + '_' + str(value_idx)
-                value_idx += 1
-            root["inner_values"][k] = v
-
+            new_k = self.check_key_exist_in_values(k, root["inner_values"], new_index = 2)
+            root["inner_values"][new_k] = v
                     
         return nodes
 
-    def create_df(self, nodes):
-         
-        header_values = {
-            "UNITS-BORE": "",
-            "UNITS-CO-ORDS": "",
-            "UNITS-BOLT-LENGTH": "",
-            "UNITS-BOLT-DIA": "",
-            "UNITS-WEIGHT": "", 
-            "UID": ""}
-        
-        header_values = self.get_header_values(nodes, header_values)
-        
-        pipeline_values = {
-            "PIPELINE-REFERENCE": "",
-            "PL_PIPING-SPEC": "",
-            "PL_UID": "",
-            "PL_MISC-SPEC1":"",
-            "PL_MISC-SPEC2":"",
-            "PL_MISC-SPEC3":"",
-            "PL_MISC-SPEC4":"",
-            "ITEM-ATTRIBUTE1":"",
-            "START-CO-ORDS": "" 
-
-        }
-
-        pipeline_values = self.get_pipeline_values(nodes, pipeline_values)
-
-        elements = self.get_node_elements_by_name(nodes,"WELD")
-        if len(elements) == 0:
-            return None
-        
-        df = pd.DataFrame()
-        for e in elements:
-            row = self.get_empty_row()
-            
-            for k,v in header_values.items():
-                row[k] = v
-
-            for k,v in pipeline_values.items():
-                row[k] = v
-            
-            idx = 1            
-            for k,v in e["inner_values"].items():
-                if 'POINT' in k:
-                    x,y,z,dn = self.get_coords_from_endpoint(v)
-                    row['X' + str(idx)] = x
-                    row['Y' + str(idx)] = y
-                    row['Z'+ str(idx)] = z
-                    row['DN' + str(idx)] = dn
-                    idx += 1
-                    
-                else:
-                    row[k] = v
-            df = df.append(row, ignore_index = True, sort=False)
-        
-        return df
-
-    def get_coords_from_endpoint(self, end_point):
-        '''
-        Function return x, y, z, dn from endpoint
-        '''
-        l = end_point.split()
-        x,y,z = l[:3]
-        if len(l) == 4:
-            dn = l[3]
-        else:
-            dn = ""
-        
-        return x, y, z, dn
+    def is_root_element(self, line):
+        return not line.startswith(" ")
 
     def get_new_root(self, line):
         root = {}
-        kv = self.get_key_value(line)
-        root["name"] = kv[0]
-        root["value"] = kv[1]
+        k, v = self.get_key_value(line)
+        root["name"] = k
+        root["section_name"]= self.get_section_name(k)
+        root["value"] = v
         root["inner_values"] = {}
         return root
-        
-    
+
     def get_key_value(self, line):
         kv = line.split(maxsplit=1)
         k = kv[0]
         v = kv[1] if len(kv) > 1 else ""
         return k, v
+
+    def get_section_name(self, name):
+        if name in self.config.header_sections: return "HEADER"
+        if name in self.config.pipeline_sections: return "PIPELINE"
+        if name in self.config.material_sections: return "MATERIAL"
+        if name in self.config.section_not_report: return "NOT REPORT"
+        if name in self.config.section_types: return name
+        return "PART"
+
+
+    def check_key_exist_in_values(self, k, inner_values, new_index):
+        if k in inner_values.keys():
+            k = self.get_value_without_ending_index(k)
+            k = k + '_' + str(new_index)
+            k = self.check_key_exist_in_values(k, inner_values, new_index+1)
+        return k            
     
-    def is_root_element(self, line):
-        return not line.startswith(" ")
+    def get_value_without_ending_index(self, k):
+        if k.endswith(('_2','_3','_4','_5','_6')):
+            k = k[:-2]
+        return k
+
+    def create_one_file_df(self):
+        header_values = self.get_header_values()
+        pipeline_values = self.get_pipeline_values()
+
+        df = pd.DataFrame()
+        for section_name in self.config.section_to_report:
+            section_df = self.create_section_df(header_values, pipeline_values, section_name)
+            df = df.append(section_df, ignore_index = True, sort=False)
+        return df
+        
+    def get_header_values(self):
+        elements = self.get_elements_by_section_name("HEADER")
+        if len(elements) == 0:
+            QMessageBox.critical(None, 'Error', "Header not found", QMessageBox.Ok)
+        header_values = {}
+        for e in elements:
+            header_values[e['name']] = e["value"]
+        
+        return header_values        
+
+    def get_pipeline_values(self):
+        elements = self.get_elements_by_section_name("PIPELINE")
+        if len(elements) == 0:
+            QMessageBox.critical(None, 'Error', "Pipiline Reference info not found", QMessageBox.Ok)
+            return
+        
+        pipeline_values = {}
+        pipeline_values['PIPELINE-REFERENCE'] = elements[0]['value']
+        
+        for name in self.config.pipeline_attributes:
+            if name in elements[0]["inner_values"].keys():
+                pipeline_values[name] = elements[0]["inner_values"][name]
+
+        return pipeline_values
+
+    def get_elements_by_section_name(self, section_name):
+        elements = list(filter(lambda x: x["section_name"] == section_name, self.nodes))
+        return elements
+
+    def create_section_df(self, header_values, pipeline_values, section_name):
+        elements = self.get_elements_by_section_name(section_name)
+        if len(elements) == 0:
+            return None
+        
+        df = pd.DataFrame()
+        for element in elements:
+            if element["inner_values"] == {}:
+                continue
+            row = self.create_one_row(element, header_values, pipeline_values)
+            df = df.append(row, ignore_index = True, sort=False)
+        
+        return df.sort_values(by = "PART_TYPE")    
     
+    def create_one_row(self, element, header_values, pipeline_values):
+        row = self.get_empty_row()
+                
+        row['PART_TYPE'] = element["name"]
+
+        for k,v in pipeline_values.items():
+            row[k] = v
+
+        current_attribute_group = self.get_current_attribute_group(element["section_name"])    
+        for attribute_name in current_attribute_group:
+            row[attribute_name] = self.get_attribute_value(element["inner_values"], attribute_name)    
+        
+        for k, v in self.get_material_data(element["inner_values"]).items():
+            row[k] = v
+            
+        for k,v in header_values.items():
+            row[k] = v
+        return row
+    
+    def get_current_attribute_group(self, section_name):
+        if section_name == "WELD": return self.config.weld_attributes
+        if section_name == "SUPPORT": return self.config.support_attributes
+        if section_name == "BOLT": return self.config.bolt_attributes
+        if section_name == "GASKET": return self.config.gasket_attributes
+        if section_name == "PART": return self.config.part_attributes
+        if section_name == "PIPE": return self.config.pipe_attributes
+        if section_name == "INSTRUMENT": return self.config.instrument_attributes
+        return []
+
+    def get_attribute_value(self, inner_values, attribute_name):
+            if attribute_name.upper() in ["X1", "X2", "X3", "Y1", "Y2", "Y3", "Z1", "Z2", "Z3", "DN1", "DN2","DN3"]: 
+                return self.get_coord_diam(inner_values, attribute_name.upper())
+            elif attribute_name.upper() in inner_values.keys():
+                return inner_values[attribute_name]
+            return ""
+                
+    def get_coord_diam(self, inner_values, coord_name):
+        coord_index = coord_name[-1]
+        coord_name = coord_name[:-1]
+                            
+        if coord_index == '1':
+            if "END-POINT" in inner_values.keys():
+                return self.get_coords_from_endpoint(inner_values["END-POINT"], coord_name)
+            elif "CO-ORDS" in inner_values.keys():
+                return self.get_coords_from_endpoint(inner_values["CO-ORDS"], coord_name)    
+            else:
+                return ""
+        
+        if coord_index == '2':
+            if "END-POINT_2" in inner_values.keys():
+                return self.get_coords_from_endpoint(inner_values["END-POINT_2"], coord_name)
+            elif "CO-ORDS_2" in inner_values.keys():
+                return self.get_coords_from_endpoint(inner_values["CO-ORDS_2"], coord_name)    
+            else:
+                return ""
+
+        if coord_index == '3':
+            if "END-POINT_3" in inner_values.keys():
+                return self.get_coords_from_endpoint(inner_values["END-POINT_3"], coord_name)
+            elif "CO-ORDS_3" in inner_values.keys():
+                return self.get_coords_from_endpoint(inner_values["CO-ORDS_3"], coord_name)    
+            else:
+                return ""
+        return ""
+    
+    def get_coords_from_endpoint(self, end_point, coord_name):
+        l = end_point.split()
+        if coord_name == "X": return l[0]
+        if coord_name == "Y": return l[1]
+        if coord_name == "Z": return l[2]
+        if coord_name == "DN":
+            if len(l) == 4:
+                return l[3]
+        return ""
     
     def get_empty_row(self):
         return pd.Series()
     
+    def get_material_data(self, inner_values):
+        material_data = {}
+        if 'MATERIAL-IDENTIFIER' in inner_values.keys():
+            material_id = inner_values["MATERIAL-IDENTIFIER"]
+            materials = self.get_elements_by_section_name("MATERIAL")
+            for material in materials:
+                if material['value'] == material_id:
+                    for material_attribute in self.config.material_attributes:
+                        if material_attribute in material['inner_values'].keys():
+                            material_data[material_attribute] = material['inner_values'][material_attribute]
+        return material_data
+
+
+
+    def final_formatting(self, df):
+        df.fillna("", inplace = True)
+        df_new = pd.DataFrame()
+        col_not_in_column_names = []
+        new_columns = [c.upper() for c in self.config.column_names]
+        nodes_columns = [self.config.column_names[c].upper() for c in new_columns] 
+        for new_name, node_name in zip(new_columns, nodes_columns):
+            if node_name in df.columns:
+                df_new[new_name] = df[node_name]
         
-    def get_header_values(self, nodes, header_values):
-        '''
-        processing header info
-        '''
-        for h_name, _ in header_values.items():
-            elements = self.get_node_elements_by_name(nodes, h_name)
-            if len(elements) == 1:
-                header_values[h_name] = elements[0]["value"]
-        return header_values        
+        columns_that_not_in_new_columns = list(set(df.columns) - set(nodes_columns))
+        df_new[columns_that_not_in_new_columns] = df[columns_that_not_in_new_columns]
 
-    def get_pipeline_values(self, nodes, pipeline_values):
-        elements = self.get_node_elements_by_name(nodes, "PIPELINE-REFERENCE")
-        if len(elements) == 0:
-            QMessageBox.critical(None, 'Error', "Pipiline Reference info not found", QMessageBox.Ok)
-            return
-        pl = elements[0]
-        for h_name, _ in pipeline_values.items():
-            if h_name == "PIPELINE-REFERENCE":
-                pipeline_values["PIPELINE-REFERENCE"] = pl["value"]
-            else:
-                if h_name[3:] in pl["inner_values"].keys():
-                    pipeline_values[h_name] = pl["inner_values"][h_name[3:]]
-        
-        return pipeline_values
-
-
-
-    def get_node_elements_by_name(self, nodes, name):
-        elements = list(filter(lambda x: x["name"] == name, nodes))
-        return elements
-
-
-    def get_columns_to_show(self, columns):
-        cols_from_ini = config.weld_attributes
-        
-        final_cols = []
-
-        for c in cols_from_ini:
-            if c not in columns:
-                QMessageBox.critical(None, 'Error', "Column not found in data: {}".format(c), QMessageBox.Ok)
-            else:
-                final_cols.append(c)    
-        
-        return final_cols
+        return df_new
+            
 
     def excel_export(self):
         if self.df is not None:
@@ -281,6 +340,7 @@ if __name__ == '__main__':
     appctxt.app.setStyleSheet(open(stylesheet).read())
 
     config = Configuration(appctxt)
+    appctxt.config = config
         
     if len(config.weld_attributes) == 0:
         QMessageBox.critical(None, 'Error', "Error in ini file", QMessageBox.Ok)
