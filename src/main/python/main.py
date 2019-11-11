@@ -100,8 +100,11 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
                     else:
                         df = df.append(one_file_df, ignore_index = True, sort = False)
             
+            if self.config.use_aggregation:
+                df = self.group_values(df)
+
             self.df = self.final_formatting(df)
-                    
+           
         model = PandasModel(self.df)
         self.tableView.setModel(model)
         self.statusBar.showMessage('Elements retrieved')
@@ -177,13 +180,17 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
 
     def create_one_file_df(self):
         header_values = self.get_header_values()
+        
+        if "UNITS-CO-ORDS" in header_values.keys():
+            self.dim_units = header_values["UNITS-CO-ORDS"].upper()
+        
         pipeline_values = self.get_pipeline_values()
 
         df = pd.DataFrame()
         for section_name in self.config.section_to_report:
             section_df = self.create_section_df(header_values, pipeline_values, section_name)
             df = df.append(section_df, ignore_index = True, sort=False)
-        return df
+        return df.fillna('')
         
     def get_header_values(self):
         elements = self.get_elements_by_section_name("HEADER")
@@ -192,7 +199,7 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
         header_values = {}
         for e in elements:
             header_values[e['name']] = e["value"]
-        
+                
         return header_values        
 
     def get_pipeline_values(self):
@@ -226,7 +233,7 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
             
             df = df.append(row, ignore_index = True, sort=False)
         
-        return df.sort_values(by = "PART_TYPE")    
+        return df.fillna('').sort_values(by = "PART_TYPE")    
     
     def create_one_row(self, element, header_values, pipeline_values):
         row = self.get_empty_row()
@@ -239,7 +246,7 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
         attributes = set(self.config.column_names.values())
         for attribute_name in attributes:
             attr_value = self.get_attribute_value(element["inner_values"], attribute_name, part_type)    
-            if attr_value!="":
+            if attr_value!= None and attribute_name != 'PIPELINE-REFERENCE':
                 row[attribute_name] = attr_value
 
         for k, v in self.get_material_data(element["inner_values"]).items():
@@ -258,7 +265,7 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
                 return self.get_qty(inner_values, part_type)
             elif attribute_name.upper() in inner_values.keys():
                 return inner_values[attribute_name]
-            return ""
+            return None
                 
      
     def get_coord_diam(self, inner_values, coord_name):
@@ -306,8 +313,12 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
             Y2 = float(self.get_coord_diam(inner_values, "Y2"))
             Z2 = float(self.get_coord_diam(inner_values, "Z2"))
             pipe_len = math.sqrt((X2-X1)**2 + (Y2-Y1)**2 + (Z2-Z1)**2)
+            if self.dim_units == "MM":
+                pipe_len = pipe_len/1000
 
             return pipe_len
+        elif part_type == "BOLT":
+            return int(inner_values["BOLT-QUANTITY"])       
         else:
             return 1    
 
@@ -333,17 +344,36 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
         return material_data
 
 
+    def group_values(self, df):
+        group_by_columns = [c for c in self.config.group_by if c in df.columns]
+        reduced_columns = group_by_columns + list(set(self.config.aggregate_by) & set(df.columns)) 
+        groupped = df.loc[:,reduced_columns].groupby(by = group_by_columns, sort = False, as_index  = False).sum()
+        return groupped
+
 
     def final_formatting(self, df):
-        df.fillna("", inplace = True)
+        def sort_fun(part_type):
+            if part_type == "PIPE": return 1
+            if part_type == "INSTRUMENT": return 3
+            if part_type == "BOLT": return 4
+            if part_type == "GASKET": return 5
+            if part_type == "SUPPORT": return 6
+            if part_type == "WELD": return 7
+            return 2
+                      
+        df["TK"] = df["PART_TYPE"].apply(sort_fun)
+        df = df.sort_values(by = ['PIPELINE-REFERENCE', 'TK'])
+        df = df.drop(['TK'], axis = 1)
+
+        df.QTY = df.QTY.round(2)
+
         df_new = pd.DataFrame()
         new_columns = [c.upper() for c in self.config.column_names]
         nodes_columns = [self.config.column_names[c].upper() for c in new_columns] 
         for new_name, node_name in zip(new_columns, nodes_columns):
             if node_name in df.columns:
                 df_new[new_name] = df[node_name]
-        
-        
+           
 
         return df_new
             

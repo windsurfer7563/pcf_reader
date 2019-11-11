@@ -16,7 +16,9 @@ class Configuration:
       self.material_sections = self.config_ini['SECTIONS']['MATERIAL_SECTIONS'].split('\n')
 
       self.column_names = self.config_ini["COLUMN_NAMES"]
-
+      self.group_by = self.config_ini['AGGREGATION']["GROUP_BY_COLUMNS"].split('\n')
+      self.aggregate_by = self.config_ini['AGGREGATION']["AGGREGATE_BY_COLUMNS"].split('\n')
+      self.use_aggregation = True if self.config_ini['AGGREGATION']['USE_AGGREGATION'] == 'TRUE' else False
 
     except FileNotFoundError:
       self.error = "File not found"

@@ -2,6 +2,7 @@ import unittest
 from main import AppContext
 import os
 import pandas as pd
+import numpy as np
 from config import Configuration
 
 class MainTests(unittest.TestCase):
@@ -53,9 +54,9 @@ class MainTests(unittest.TestCase):
         self.assertEquals("101954.8700", self.app.get_coord_diam(inner_values, "Z1")) 
         inner_values = {"END-POINT": "42341.0000    86940.9000    101954.8700  0.0",
                         "END-POINT_2": "42341.0000    86940.9000    101954.8700 0.0",
-                        "END-POINT_3": "1.0000    2.0000    3.0000     1.1"}
+                        "END-POINT_2": "1.0000    2.0000    3.0000     1.1"}
         self.assertEquals("3.0000", self.app.get_coord_diam(inner_values, "Z3")) 
-        self.assertEquals("1.1", self.app.get_coord_diam(inner_values, "DN3")) 
+        self.assertEquals("1.1", self.app.get_coord_diam(inner_values, "DN2")) 
 
     def test_get_new_root(self):
         root = self.app.get_new_root("PIPELINE-REFERENCE      P49072")
@@ -93,6 +94,14 @@ class MainTests(unittest.TestCase):
                  }  
         material_data = self.app.get_material_data(inner_values)
         self.assertEquals('DM-551-RF-150', material_data['ITEM-CODE'])
+    
+    def test_group_data(self):
+        self.app.nodes = self.app.parse_file('fixtures/test_pcfs/P49072.PCF')
+        self.app.config.section_to_report = ["PIPE", "SUPPORT"]
+        df = self.app.create_one_file_df()
+        df = self.app.group_values(df)
+        print(df)
+        
 
 if __name__ == '__main__':
     unittest.main()
