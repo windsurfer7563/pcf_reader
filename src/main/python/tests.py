@@ -4,6 +4,7 @@ import os
 import pandas as pd
 import numpy as np
 from config import Configuration
+from excelwriter import ExcelWorkBookWriter
 
 class MainTests(unittest.TestCase):
     def __init__(self, *args, **kwargs):
@@ -55,7 +56,7 @@ class MainTests(unittest.TestCase):
         inner_values = {"END-POINT": "42341.0000    86940.9000    101954.8700  0.0",
                         "END-POINT_2": "42341.0000    86940.9000    101954.8700 0.0",
                         "END-POINT_2": "1.0000    2.0000    3.0000     1.1"}
-        self.assertEquals("3.0000", self.app.get_coord_diam(inner_values, "Z3")) 
+        self.assertEquals("3.0000", self.app.get_coord_diam(inner_values, "Z2")) 
         self.assertEquals("1.1", self.app.get_coord_diam(inner_values, "DN2")) 
 
     def test_get_new_root(self):
@@ -67,9 +68,9 @@ class MainTests(unittest.TestCase):
         self.app.nodes = self.app.parse_file('fixtures/test_pcfs/P49072.PCF')
         elements = self.app.get_elements_by_section_name("PIPE")
         header_values = self.app.get_header_values()
+        self.app.dim_units = "MM"
         pipeline_values = self.app.get_pipeline_values()
         df = self.app.create_one_row(elements[0], header_values, pipeline_values)
-        #print(df.shape)
         self.assertGreater(df.shape[0],0)
     
     def test_create_one_file_df(self):
@@ -102,6 +103,27 @@ class MainTests(unittest.TestCase):
         df = self.app.group_values(df)
         print(df)
         
+
+    def test_create_ExcelWriter(self):
+        self.excel_writer = ExcelWorkBookWriter('fixtures/Bom Import File.xlsm', read_only = False)
+        self.assertIsNotNone(self.excel_writer)
+        
+    def test_create_ExcelWriter(self):    
+        self.excel_writer = ExcelWorkBookWriter('fixtures/Bom Import File.xlsm', read_only = False)
+        header = self.excel_writer.get_header("Data", 3) 
+        self.assertIsNotNone(header)
+
+    def test_update_excel(self):
+        self.app.nodes = self.app.parse_file('fixtures/test_pcfs/P49072.PCF')
+        self.app.config.section_to_report = ["PIPE"]
+        df = self.app.create_one_file_df()
+        df = self.app.group_values(df)
+        self.excel_writer = ExcelWorkBookWriter('fixtures/Bom_Import_File.xlsm', read_only = False)
+        header = self.excel_writer.get_header("Data", 3)
+        column_mapping_dict = self.app.config.bom_column_names
+        self.excel_writer.update_workbook("Data", df, header, 5, column_mapping_dict)
+        self.assertEqual(self.excel_writer.get_working_sheet("Data")["H5"].value, 'P49072')
+      
 
 if __name__ == '__main__':
     unittest.main()

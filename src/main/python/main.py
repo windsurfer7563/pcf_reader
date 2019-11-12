@@ -13,6 +13,10 @@ from PyQt5 import QtCore
 import math
 from functools import lru_cache
 from config import Configuration
+import logging
+import tempfile
+import time
+from excelwriter import ExcelWorkBookWriter
 
 
 @contextmanager
@@ -41,14 +45,17 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
         text.setWordWrap(True)
         button1 = QPushButton('Open folder with PCF files')
         button1.clicked.connect(self.get_folder_name_and_process)
-        button2 = QPushButton('Export to Exel file')
+        button2 = QPushButton('Export to Excel file')
         button2.clicked.connect(self.excel_export)
+        button3 = QPushButton('Export to BOM format Excel file')
+        button3.clicked.connect(self.excel_bom_format_export)
         layout = QVBoxLayout()
         layout.addWidget(self.tableView)
         layout.addWidget(text)
         b_lay = QHBoxLayout()
         b_lay.addWidget(button1)
         b_lay.addWidget(button2)
+        b_lay.addWidget(button3)
         layout.addLayout(b_lay)
         layout.setAlignment(b_lay, Qt.AlignHCenter)
         
@@ -62,7 +69,7 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
         self.tableView.setModel(model)
 
         window.show()
-
+        QGuiApplication.restoreOverrideCursor()    
         return self.app.exec_()                 # 3. End run() with this line
 
     def get_folder_name_and_process(self):
@@ -101,9 +108,9 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
                         df = df.append(one_file_df, ignore_index = True, sort = False)
             
             if self.config.use_aggregation:
-                df = self.group_values(df)
+                self.row_data_df = self.group_values(df)
 
-            self.df = self.final_formatting(df)
+            self.df = self.final_formatting(self.row_data_df)
            
         model = PandasModel(self.df)
         self.tableView.setModel(model)
@@ -180,7 +187,7 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
 
     def create_one_file_df(self):
         header_values = self.get_header_values()
-        
+            
         if "UNITS-CO-ORDS" in header_values.keys():
             self.dim_units = header_values["UNITS-CO-ORDS"].upper()
         
@@ -209,11 +216,13 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
         pipeline_values = {}
         pipeline_values['PIPELINE-REFERENCE'] = elements[0]['value']
         
+        pipeline_values["PIPING-SPEC"] = elements[0]["inner_values"]["PIPING-SPEC"]
+        '''
         pipeline_attributes = set(elements[0]["inner_values"].keys()) & set(self.config.column_names.values()) 
         for name in pipeline_attributes:
             if name in elements[0]["inner_values"].keys():
                 pipeline_values[name] = elements[0]["inner_values"][name]
-
+        '''
         return pipeline_values
 
     def get_elements_by_section_name(self, section_name):
@@ -249,12 +258,26 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
             if attr_value!= None and attribute_name != 'PIPELINE-REFERENCE':
                 row[attribute_name] = attr_value
 
+        
         for k, v in self.get_material_data(element["inner_values"]).items():
             row[k] = v
             
         for k,v in header_values.items():
             row[k] = v
-  
+        
+                
+        if row["PART_TYPE"] == 'PIPE':
+            row['QTY_UNITS'] = 'm'
+        else:
+            row['QTY_UNITS'] = 'STK'
+
+        # removing insulation info for uninsulated components 
+        if "INSULATION" in row.index:
+            if row["INSULATION"] != "ON":
+                row["MISC-SPEC4"] = ""
+        else:
+            row["MISC-SPEC4"] = ""
+
         return row
    
 
@@ -302,6 +325,7 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
         if coord_name == "DN":
             if len(l) == 4:
                 return l[3]
+            
         return ""
     
     def get_qty(self, inner_values, part_type):
@@ -382,21 +406,46 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
         if self.df is not None:
             fileName = QFileDialog.getSaveFileName(None,"Select file name to export","","xlsx files (*.xlsx)")
             if fileName[0]:
+                self.statusBar.showMessage("Exporting data...")
                 self.df.to_excel(fileName[0], sheet_name = "welds", index = False)
+                self.statusBar.showMessage("Data exported")
+
+    def excel_bom_format_export(self):
+        if self.row_data_df is not None:
+            fileName = QFileDialog.getSaveFileName(None,"Select file name to export","","xlsx files (*.xlsx)")
+            if fileName[0]:
+                self.statusBar.showMessage("Exporting data...")
+                with wait_cursor():
+                    QtCore.QCoreApplication.processEvents()
+                    sheet_name = self.config.bom_options["SHEET_NAME"]
+                    file_name =  self.config.bom_file_template
+                    start_row = int(self.config.bom_options["START_ROW"])
+                    header_row = int(self.config.bom_options["HEADER_ROW"])
+                    excel_writer = ExcelWorkBookWriter(file_name, read_only = False)
+                    header = excel_writer.get_header(sheet_name, header_row)
+                    column_mapping_dict = self.config.bom_column_names
+                    excel_writer.update_workbook(sheet_name, self.row_data_df, header, start_row, column_mapping_dict)
+                    excel_writer.book.save(fileName[0])  
+                msg = 'Writed ' + str(self.row_data_df.shape[0]) + ' to the sheet: ' + sheet_name
+                logging.info(msg)
                 self.statusBar.showMessage("Data exported")
 
 
 if __name__ == '__main__':
+    log_filename = tempfile.gettempdir() + '/' + "PCF_reader_{}.log".format(time.strftime("%d_%m_%Y_%H_%M_%S"))
+    logging.basicConfig(format="%(asctime)s %(name) - 12s %(levelname)-8s %(message)s", level = logging.INFO, filename=log_filename)
+       
     appctxt = AppContext()                      # 4. Instantiate the subclass
+    QGuiApplication.setOverrideCursor(QCursor(QtCore.Qt.WaitCursor))
     stylesheet = appctxt.get_resource('styles.qss')
     appctxt.app.setStyleSheet(open(stylesheet).read())
-
     config = Configuration(appctxt)
     appctxt.config = config
-        
+
     if len(config.column_names) == 0:
         QMessageBox.critical(None, 'Error', "Error in ini file", QMessageBox.Ok)
         sys.exit(-1)   
     
+    logging.info('PCF Reader Main Application Started')
     exit_code = appctxt.run()                   # 5. Invoke run()
     sys.exit(exit_code)

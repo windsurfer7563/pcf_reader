@@ -20,6 +20,11 @@ class Configuration:
       self.aggregate_by = self.config_ini['AGGREGATION']["AGGREGATE_BY_COLUMNS"].split('\n')
       self.use_aggregation = True if self.config_ini['AGGREGATION']['USE_AGGREGATION'] == 'TRUE' else False
 
+      self.bom_options = self.config_ini["BOM_FILE_OPTIONS"]
+      self.bom_column_names = self.config_ini["BOM_COLUMN_NAMES"]
+
+      self.bom_file_template = app_context.get_resource(self.config_ini["BOM_FILE_OPTIONS"]["FILE_NAME"])
+
     except FileNotFoundError:
       self.error = "File not found"
 
