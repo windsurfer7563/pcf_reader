@@ -62,7 +62,7 @@ class ExcelWorkBookWriter:
             # bolt length-> ino DN2 columns
             if r['PART_TYPE'] == 'BOLT':
                 k_in_excel = header.index('DN1')+1    
-                working_sheet.cell(start_row, k_in_excel).value = r['BOLT-DIA']
+                working_sheet.cell(start_row, k_in_excel).value = self.get_bom_translated_value(r['BOLT-DIA'], 'DN1')
                 k_in_excel = header.index('DN2')+1    
                 working_sheet.cell(start_row, k_in_excel).value = r['BOLT-LENGTH']
                 k_in_excel = header.index('DN2 EINHEIT')+1
@@ -75,8 +75,10 @@ class ExcelWorkBookWriter:
   def get_bom_translated_value(self, value, column_name):
         if value == "INCH": return "in"
         elif value == "MM": return "mm"
-        elif str(value).startswith('0.') and column_name in ['DN1', 'DN2']: return str(value)[1:]
-        elif str(value).endswith('.0000'): return str(value)[:-5]
+        elif str(value).startswith('0.') and column_name in ['DN1', 'DN2']: 
+          value =  str(value)[1:]
+        
+        if str(value).endswith('.0000'): return str(value)[:-5]
         elif str(value).endswith('000') and column_name in ['DN1', 'DN2']: return str(value)[:-3]
         elif str(value).endswith('00') and column_name in ['DN1', 'DN2']: return str(value)[:-2]
         else:
