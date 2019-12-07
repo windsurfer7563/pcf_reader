@@ -1,7 +1,8 @@
 from fbs_runtime.application_context.PyQt5 import ApplicationContext
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QWidget, QLabel, QPushButton, QVBoxLayout, QFileDialog, QStatusBar
+from PyQt5.QtWidgets import QWidget, QLabel, QPushButton, QVBoxLayout, QFileDialog, QStatusBar, QSplashScreen
 from PyQt5.QtWidgets import QMainWindow, QMessageBox, QTableView, QHBoxLayout
+from PyQt5.QtGui import QPixmap
 import os
 import re
 import pandas as pd
@@ -67,8 +68,8 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
         self.df = pd.DataFrame(columns=[c.upper() for c in self.config.column_names])
         model = PandasModel(self.df)
         self.tableView.setModel(model)
-
         window.show()
+        self.splash.finish(window)
         QGuiApplication.restoreOverrideCursor()    
         return self.app.exec_()                 # 3. End run() with this line
 
@@ -434,11 +435,15 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
 if __name__ == '__main__':
     log_filename = tempfile.gettempdir() + '/' + "PCF_reader_{}.log".format(time.strftime("%d_%m_%Y_%H_%M_%S"))
     logging.basicConfig(format="%(asctime)s %(name) - 12s %(levelname)-8s %(message)s", level = logging.INFO, filename=log_filename)
-       
     appctxt = AppContext()                      # 4. Instantiate the subclass
     QGuiApplication.setOverrideCursor(QCursor(QtCore.Qt.WaitCursor))
-    stylesheet = appctxt.get_resource('styles.qss')
-    appctxt.app.setStyleSheet(open(stylesheet).read())
+    #stylesheet = appctxt.get_resource('styles.qss')
+    #appctxt.app.setStyleSheet(open(stylesheet).read())
+    splash_pix = QPixmap(appctxt.get_resource('loading.png'))
+    appctxt.splash = QSplashScreen(splash_pix, Qt.WindowStaysOnTopHint)
+    appctxt.splash.show()
+        
+    
     config = Configuration(appctxt)
     appctxt.config = config
 
@@ -447,5 +452,7 @@ if __name__ == '__main__':
         sys.exit(-1)   
     
     logging.info('PCF Reader Main Application Started')
+    
+       
     exit_code = appctxt.run()                   # 5. Invoke run()
     sys.exit(exit_code)
