@@ -1,0 +1,242 @@
+ISOGEN-FILES            ISOGEN.FLS
+UNITS-BORE              INCH
+UNITS-CO-ORDS           MM
+UNITS-BOLT-LENGTH       MM
+UNITS-BOLT-DIA          MM
+UNITS-WEIGHT            KGS
+UID                     44066F78-8C4E-4053-8E98-E982718EC9D8
+PIPELINE-REFERENCE      TP408B
+    UID                 619E737D-2FD8-4C05-A81D-B0196DA0AD74
+    AREA                1
+    ATTRIBUTE0          
+    ATTRIBUTE1          
+    ATTRIBUTE10         
+    ATTRIBUTE101        
+    ATTRIBUTE102        ISO 3"-040168
+    ATTRIBUTE104        RAF-Schwechat
+    ATTRIBUTE106        550005
+    ATTRIBUTE107        H10-J417
+    ATTRIBUTE108        H10-F008
+    ATTRIBUTE109        5300420
+    ATTRIBUTE11         550005
+    ATTRIBUTE110        C-Stahl
+    ATTRIBUTE111        2"-0040124-A1-61
+    ATTRIBUTE112        Fackelgasleitung
+    ATTRIBUTE116        ja
+    ATTRIBUTE117        tw. W
+    ATTRIBUTE118        -
+    ATTRIBUTE119        Wasser
+    ATTRIBUTE12         
+    ATTRIBUTE120        G1
+    ATTRIBUTE121        -
+    ATTRIBUTE122        -
+    ATTRIBUTE123        -
+    ATTRIBUTE125        
+    ATTRIBUTE126        
+    ATTRIBUTE127        
+    ATTRIBUTE129        00
+    ATTRIBUTE13         
+    ATTRIBUTE130        Divoky
+    ATTRIBUTE131        Pörner
+    ATTRIBUTE132        05.06.2018
+    ATTRIBUTE133        
+    ATTRIBUTE134        
+    ATTRIBUTE135        
+    ATTRIBUTE136        
+    ATTRIBUTE137        
+    ATTRIBUTE138        
+    ATTRIBUTE139        
+    ATTRIBUTE14         
+    ATTRIBUTE140        
+    ATTRIBUTE141        
+    ATTRIBUTE142        
+    ATTRIBUTE143        
+    ATTRIBUTE144        
+    ATTRIBUTE145        
+    ATTRIBUTE146        
+    ATTRIBUTE147        
+    ATTRIBUTE148        
+    ATTRIBUTE15         
+    ATTRIBUTE16         
+    ATTRIBUTE17         
+    ATTRIBUTE18         X
+    ATTRIBUTE19         ja
+    ATTRIBUTE2          
+    ATTRIBUTE20         tlw.
+    ATTRIBUTE21         
+    ATTRIBUTE22         X
+    ATTRIBUTE23         
+    ATTRIBUTE24         X
+    ATTRIBUTE25         
+    ATTRIBUTE26         X
+    ATTRIBUTE27         
+    ATTRIBUTE28         X
+    ATTRIBUTE29         Fackelgas
+    ATTRIBUTE3          
+    ATTRIBUTE32         8.6
+    ATTRIBUTE33         121
+    ATTRIBUTE34         
+    ATTRIBUTE35         
+    ATTRIBUTE37         TP408B; (PT=78bar)
+    ATTRIBUTE38         Nur für neuen Rohrleitungsabschnitt gültig:
+    ATTRIBUTE39         Rohrklasse: 03CA3S; Kat.: I / Herst.
+    ATTRIBUTE40         Blindflansch 4" / 300lbs auf best. Armatur
+    ATTRIBUTE41         Korr.-schutz OMV-CS-1A; Isolierung: nein
+    ATTRIBUTE42         
+    ATTRIBUTE43         
+    ATTRIBUTE44         
+    ATTRIBUTE45         
+    ATTRIBUTE46         
+    ATTRIBUTE47         
+    ATTRIBUTE48         H00420-040168-61
+    ATTRIBUTE50         550005
+    ATTRIBUTE54         121
+    ATTRIBUTE55         8.6
+    ATTRIBUTE56         -
+    ATTRIBUTE57         
+    ATTRIBUTE58         X
+    ATTRIBUTE59         
+    ATTRIBUTE60         
+    ATTRIBUTE61         
+    ATTRIBUTE62         
+    ATTRIBUTE63         
+    ATTRIBUTE64         Ausgabe
+    ATTRIBUTE65         Müller
+    ATTRIBUTE66         
+    ATTRIBUTE67         
+    ATTRIBUTE68         
+    ATTRIBUTE69         
+    ATTRIBUTE70         
+    ATTRIBUTE71         
+    ATTRIBUTE72         
+    ATTRIBUTE73         
+    ATTRIBUTE74         
+    ATTRIBUTE75         
+    ATTRIBUTE76         
+    ATTRIBUTE77         niedrig
+    ATTRIBUTE78         
+    ATTRIBUTE79         
+    ATTRIBUTE80         
+    ATTRIBUTE81         -
+    ATTRIBUTE82         -
+    ATTRIBUTE83         
+    ATTRIBUTE84         -
+    ATTRIBUTE85         ja
+    ATTRIBUTE86         ja
+    ATTRIBUTE87         10705227
+    ATTRIBUTE9          
+    PIPING-SPEC         03CA3S
+PIPE
+    COMPONENT-IDENTIFIER 1
+    END-POINT           0.0000        0.0000        0.0000 4.0000
+    END-POINT           0.0000        0.0000        262.9000 4.0000
+    MATERIAL-IDENTIFIER 1
+    UID                 F6367D45-B915-4FE0-B632-B4A92AD2873B
+    CATEGORY            FABRICATION
+    MATERIAL-LIST       EXCLUDE
+    PIPING-SPEC         03CA3S
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 2B3373B9-AA9F-4280-A570-9184C3954B13
+FLANGE
+    COMPONENT-IDENTIFIER 8
+    END-POINT           0.0000        0.0000        348.9000 4.0000
+    END-POINT           0.0000        0.0000        262.9000 4.0000
+    SKEY                FLWN
+    MATERIAL-IDENTIFIER 2
+    UID                 1AD58A8F-E0DD-44EE-BD27-F8F101F0939E
+    CATEGORY            FABRICATION
+    FLANGE-LEFT-LOOSE   OFF
+    MATERIAL-LIST       EXCLUDE
+    PIPING-SPEC         03CA3S
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 6A4235C9-EAED-4E45-8A47-D0E04A0A4315
+BOLT
+    COMPONENT-IDENTIFIER 12
+    CO-ORDS             0.0000        0.0000        348.9000
+    BOLT-DIA            19.05
+    BOLT-LENGTH         120
+    BOLT-QUANTITY       8
+    CATEGORY            ERECTION
+    MATERIAL-LIST       EXCLUDE
+    MATERIAL-IDENTIFIER 3
+    UID                 44F3819B-4A7D-4C0B-AF11-E38ACB7BB2B1
+    UCI                 EF332EF4-1E85-4EFD-96E0-8F116EC9D303
+GASKET
+    COMPONENT-IDENTIFIER 5
+    END-POINT           0.0000        0.0000        348.9000 4.0000
+    END-POINT           0.0000        0.0000        352.4000 4.0000
+    MATERIAL-IDENTIFIER 4
+    UID                 3E345C00-B5DB-423A-9869-1C189244CA33
+    CATEGORY            ERECTION
+    MATERIAL-LIST       EXCLUDE
+    PIPING-SPEC         03CA3S
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 5930C6E6-87BD-4E5A-8BFE-86E1088E28D8
+VALVE
+    COMPONENT-IDENTIFIER 2
+    END-POINT           0.0000        0.0000        657.4000 4.0000
+    END-POINT           0.0000        0.0000        352.4000 4.0000
+    CENTRE-POINT        0.0000        0.0000        568.4000
+    SKEY                VVFL
+    MATERIAL-IDENTIFIER 5
+    UID                 182FFCFF-96FA-45C3-A9FE-80D8C69306F2
+    CATEGORY            ERECTION
+    MATERIAL-LIST       EXCLUDE
+    PIPING-SPEC         03CA3S
+    SPINDLE-DIRECTION   SOUTH
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 CF73012E-7F78-4496-A07E-78B52BD3AC04
+BOLT
+    COMPONENT-IDENTIFIER 13
+    CO-ORDS             0.0000        0.0000        657.4000
+    BOLT-DIA            19.05
+    BOLT-LENGTH         120
+    BOLT-QUANTITY       8
+    CATEGORY            FABRICATION
+    MATERIAL-LIST       INCLUDE
+    MATERIAL-IDENTIFIER 3
+    UID                 3EC33B6A-0170-48E1-9BB6-964B43D71053
+    UCI                 34D5CC64-822B-4E1C-9E64-2E5BB3C73B85
+GASKET
+    COMPONENT-IDENTIFIER 6
+    END-POINT           0.0000        0.0000        657.4000 4.0000
+    END-POINT           0.0000        0.0000        660.9000 4.0000
+    MATERIAL-IDENTIFIER 4
+    UID                 DD8C6793-7200-4BF2-91C2-D5A650BE930E
+    CATEGORY            FABRICATION
+    PIPING-SPEC         03CA3S
+    UCI                 D299AC5F-F981-4C48-BB90-A83531D53AD8
+FLANGE-BLIND
+    COMPONENT-IDENTIFIER 7
+    END-POINT           0.0000        0.0000        660.9000 4.0000
+    END-POINT           0.0000        0.0000        693.1000 4.0000
+    SKEY                FLBL
+    MATERIAL-IDENTIFIER 6
+    UID                 ADF95EFF-5E7E-445D-9318-D5CAEC750DD8
+    CATEGORY            FABRICATION
+    FLANGE-LEFT-LOOSE   OFF
+    PIPING-SPEC         03CA3S
+    UCI                 6E9C4777-A3C3-4D21-BA09-CD38C0F6C667
+MESSAGE-CIRCLE
+    CO-ORDS             0.0000        0.0000        693.1000
+    STATUS              DIMENSIONED
+    TEXT                TP$408B
+MATERIALS
+MATERIAL-IDENTIFIER 1
+    ITEM-CODE PCA_XS
+    DESCRIPTION Rohr 114,3x8,5 
+MATERIAL-IDENTIFIER 2
+    ITEM-CODE FW03CAS_XS
+    DESCRIPTION V-Flansch 300RF 114,3x8,5 
+MATERIAL-IDENTIFIER 3
+    ITEM-CODE BNCT0.75x120
+    DESCRIPTION Schraubenbolzen 3/4"x120 
+MATERIAL-IDENTIFIER 4
+    ITEM-CODE GS03CL
+    DESCRIPTION Spiraldtg 300 4" 
+MATERIAL-IDENTIFIER 5
+    ITEM-CODE VG03CAS
+    DESCRIPTION Schieber 300RF 4" 
+MATERIAL-IDENTIFIER 6
+    ITEM-CODE FB03CAS
+    DESCRIPTION Bl-Flansch 300RF 4" 

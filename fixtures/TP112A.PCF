@@ -1,0 +1,217 @@
+ISOGEN-FILES            ISOGEN.FLS
+UNITS-BORE              MM
+UNITS-CO-ORDS           MM
+UNITS-BOLT-LENGTH       MM
+UNITS-BOLT-DIA          MM
+UNITS-WEIGHT            KGS
+UID                     E72917B4-1624-4742-960F-2780564C4DD4
+PIPELINE-REFERENCE      TP112A
+    UID                 EA7A301E-BD78-49EE-9337-85DAA21691F7
+    AREA                1
+    ATTRIBUTE0          
+    ATTRIBUTE1          
+    ATTRIBUTE10         
+    ATTRIBUTE101        
+    ATTRIBUTE102        ISO 50-0040088-A10u-73
+    ATTRIBUTE104        RAF-Schwechat
+    ATTRIBUTE106        550005
+    ATTRIBUTE107        H10-J137
+    ATTRIBUTE108        H10-F008
+    ATTRIBUTE109        5300430
+    ATTRIBUTE11         550005
+    ATTRIBUTE110        C-Stahl
+    ATTRIBUTE111        Anlagengrenze LBI
+    ATTRIBUTE112        100-04351-31311-73
+    ATTRIBUTE116        ja
+    ATTRIBUTE117        nein
+    ATTRIBUTE118        8.4
+    ATTRIBUTE119        Wasser
+    ATTRIBUTE12         
+    ATTRIBUTE120        F1
+    ATTRIBUTE121        TÜV
+    ATTRIBUTE122        -
+    ATTRIBUTE123        A10-73
+    ATTRIBUTE125        
+    ATTRIBUTE126        
+    ATTRIBUTE127        
+    ATTRIBUTE129        00
+    ATTRIBUTE13         
+    ATTRIBUTE130        Divoky
+    ATTRIBUTE131        Pörner
+    ATTRIBUTE132        16.05.2018
+    ATTRIBUTE133        
+    ATTRIBUTE134        
+    ATTRIBUTE135        
+    ATTRIBUTE136        
+    ATTRIBUTE137        
+    ATTRIBUTE138        
+    ATTRIBUTE139        
+    ATTRIBUTE14         
+    ATTRIBUTE140        
+    ATTRIBUTE141        
+    ATTRIBUTE142        
+    ATTRIBUTE143        
+    ATTRIBUTE144        
+    ATTRIBUTE145        
+    ATTRIBUTE146        
+    ATTRIBUTE147        
+    ATTRIBUTE148        
+    ATTRIBUTE15         
+    ATTRIBUTE16         
+    ATTRIBUTE17         
+    ATTRIBUTE18         X
+    ATTRIBUTE19         nein
+    ATTRIBUTE2          
+    ATTRIBUTE20         nein
+    ATTRIBUTE21         X
+    ATTRIBUTE22         
+    ATTRIBUTE23         
+    ATTRIBUTE24         X
+    ATTRIBUTE25         
+    ATTRIBUTE26         X
+    ATTRIBUTE27         
+    ATTRIBUTE28         X
+    ATTRIBUTE29         Slop
+    ATTRIBUTE3          
+    ATTRIBUTE32         5.6
+    ATTRIBUTE33         205
+    ATTRIBUTE34         
+    ATTRIBUTE35         
+    ATTRIBUTE37         TP112A (Rohrleitungsdummy H10-H011)
+    ATTRIBUTE38         Nur für neuen Rohrleitungsabschnitt gültig:
+    ATTRIBUTE39         Rohrklasse: D4CA1S; Kat.: I / Herst.
+    ATTRIBUTE40         Blindflansch DN50 PN40 auf best. V-Flan.
+    ATTRIBUTE41         Korr.-schutz OMV-CS-1A; Isolierung: nein
+    ATTRIBUTE42         
+    ATTRIBUTE43         
+    ATTRIBUTE44         
+    ATTRIBUTE45         
+    ATTRIBUTE46         
+    ATTRIBUTE47         
+    ATTRIBUTE48         H00430-0040088-73
+    ATTRIBUTE50         550005
+    ATTRIBUTE54         205
+    ATTRIBUTE55         5.6
+    ATTRIBUTE56         8.4
+    ATTRIBUTE57         
+    ATTRIBUTE58         X
+    ATTRIBUTE59         
+    ATTRIBUTE60         
+    ATTRIBUTE61         
+    ATTRIBUTE62         
+    ATTRIBUTE63         
+    ATTRIBUTE64         Ausgabe
+    ATTRIBUTE65         Müller
+    ATTRIBUTE66         
+    ATTRIBUTE67         
+    ATTRIBUTE68         
+    ATTRIBUTE69         
+    ATTRIBUTE70         
+    ATTRIBUTE71         
+    ATTRIBUTE72         
+    ATTRIBUTE73         
+    ATTRIBUTE74         
+    ATTRIBUTE75         
+    ATTRIBUTE76         
+    ATTRIBUTE77         niedrig
+    ATTRIBUTE78         
+    ATTRIBUTE79         
+    ATTRIBUTE80         
+    ATTRIBUTE81         -
+    ATTRIBUTE82         -
+    ATTRIBUTE83         
+    ATTRIBUTE84         -
+    ATTRIBUTE85         ja
+    ATTRIBUTE86         ja
+    ATTRIBUTE87         10704830
+    ATTRIBUTE9          
+    PIPING-SPEC         D4CA1S
+PIPE
+    COMPONENT-IDENTIFIER 1
+    END-POINT           193940.0000   -61549.0000   160991.5000 50.0000
+    END-POINT           193940.0000   -61549.0000   161391.5000 50.0000
+    MATERIAL-IDENTIFIER 1
+    UID                 C9FE4EB3-1C64-4CD8-AE8F-01AC09A72C0C
+    CATEGORY            FABRICATION
+    MATERIAL-LIST       EXCLUDE
+    PIPING-SPEC         D4CA1S
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 5F984B76-F5AC-4074-BBF3-E88DF284848F
+FLOOR-SYMBOL
+    COMPONENT-IDENTIFIER 17
+    CO-ORDS             193940.0000   -61549.0000   161091.5000 50.0000
+    SKEY                FLOR
+    MATERIAL-IDENTIFIER 2
+    UID                 00E5068C-8B43-4DCA-AE82-D2AA2A54EFAE
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 AE5A9FC8-E2B8-4780-B00C-17484F6A2EB5
+FLANGE
+    COMPONENT-IDENTIFIER 5
+    END-POINT           193940.0000   -61549.0000   161439.5000 50.0000
+    END-POINT           193940.0000   -61549.0000   161391.5000 50.0000
+    SKEY                FLWN
+    MATERIAL-IDENTIFIER 3
+    UID                 AA0EF678-26BE-47F5-9692-1A8DB44D7ECA
+    CATEGORY            FABRICATION
+    FLANGE-LEFT-LOOSE   OFF
+    MATERIAL-LIST       EXCLUDE
+    PIPING-SPEC         D4CA1S
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 68DF67D1-16B3-42E5-972D-1141C4249AAC
+GASKET
+    COMPONENT-IDENTIFIER 6
+    END-POINT           193940.0000   -61549.0000   161439.5000 50.0000
+    END-POINT           193940.0000   -61549.0000   161443.0000 50.0000
+    MATERIAL-IDENTIFIER 4
+    UID                 03CC183B-469F-4883-8CDC-6D57EB345D9A
+    CATEGORY            FABRICATION
+    PIPING-SPEC         D4CA1S
+    UCI                 42F9B1F6-0CFB-49C3-8872-E48780AF256F
+FLANGE-BLIND
+    COMPONENT-IDENTIFIER 7
+    END-POINT           193940.0000   -61549.0000   161443.0000 50.0000
+    END-POINT           193940.0000   -61549.0000   161463.0000 50.0000
+    SKEY                FLBL
+    MATERIAL-IDENTIFIER 5
+    UID                 B221B8CD-7C0B-4219-AF80-5907DBE657FF
+    CATEGORY            FABRICATION
+    FLANGE-LEFT-LOOSE   OFF
+    PIPING-SPEC         D4CA1S
+    UCI                 89845AAB-7293-47AD-A1E7-77965ABC7A93
+MESSAGE-CIRCLE
+    CO-ORDS             193940.0000   -61549.0000   161463.0000
+    STATUS              DIMENSIONED
+    TEXT                TP$112A
+MESSAGE-SQUARE
+    CO-ORDS             193940.0000   -61549.0000   161463.0000
+    STATUS              DIMENSIONED
+    TEXT                Rohrleitungsdummy$Blindflansch bei TP112B$mit U65 verbinden
+BOLT
+    COMPONENT-IDENTIFIER 14
+    CO-ORDS             193940.0000   -61549.0000   161463.0000
+    BOLT-DIA            15.88
+    BOLT-LENGTH         85
+    BOLT-QUANTITY       4
+    CATEGORY            FABRICATION
+    MATERIAL-IDENTIFIER 6
+    UID                 56FD4F59-FA32-4632-A2C6-787782D2FADB
+    UCI                 357B9258-01EB-49CC-BFE1-E54FD5791FBB
+MATERIALS
+MATERIAL-IDENTIFIER 1
+    ITEM-CODE PCAD_R1s
+    DESCRIPTION Rohr 60,3x4 
+MATERIAL-IDENTIFIER 2
+    ITEM-CODE G_Floor-Symbol_0
+    DESCRIPTION Floor Symbol
+MATERIAL-IDENTIFIER 3
+    ITEM-CODE FVD4CAB1
+    DESCRIPTION V-Flansch PN40B1 60,3x4 
+MATERIAL-IDENTIFIER 4
+    ITEM-CODE GSD4CL
+    DESCRIPTION Spiraldtg PN40 50 
+MATERIAL-IDENTIFIER 5
+    ITEM-CODE FBD4CAB1
+    DESCRIPTION Bl-Flansch PN40B1 50 
+MATERIAL-IDENTIFIER 6
+    ITEM-CODE BNCT0.625x85
+    DESCRIPTION Schraubenbolzen 5/8"x85 

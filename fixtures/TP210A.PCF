@@ -1,0 +1,161 @@
+ISOGEN-FILES            ISOGEN.FLS
+UNITS-BORE              MM
+UNITS-CO-ORDS           MM
+UNITS-BOLT-LENGTH       MM
+UNITS-BOLT-DIA          MM
+UNITS-WEIGHT            KGS
+UID                     9C9FEC16-8A98-4781-ABCB-F294FA051230
+PIPELINE-REFERENCE      TP210A
+    UID                 378C0DB8-8CE5-499E-846D-F342F6646421
+    AREA                1
+    ATTRIBUTE0          
+    ATTRIBUTE1          
+    ATTRIBUTE10         
+    ATTRIBUTE101        
+    ATTRIBUTE102        ISO 80-0050110-A10u-34
+    ATTRIBUTE104        RAF-Schwechat
+    ATTRIBUTE106        550005
+    ATTRIBUTE107        H10-J212
+    ATTRIBUTE108        H10-F317
+    ATTRIBUTE109        5300510
+    ATTRIBUTE11         550005
+    ATTRIBUTE110        C-Stahl
+    ATTRIBUTE111        E519, E520
+    ATTRIBUTE112        Anlagengrenze DEA1
+    ATTRIBUTE116        ja
+    ATTRIBUTE117        nein
+    ATTRIBUTE118        9
+    ATTRIBUTE119        Wasser
+    ATTRIBUTE12         
+    ATTRIBUTE120        F2
+    ATTRIBUTE121        Hersteller
+    ATTRIBUTE122        -
+    ATTRIBUTE123        A10u-34
+    ATTRIBUTE125        
+    ATTRIBUTE126        
+    ATTRIBUTE127        
+    ATTRIBUTE129        00
+    ATTRIBUTE13         
+    ATTRIBUTE130        Divoky
+    ATTRIBUTE131        Pörner
+    ATTRIBUTE132        26.06.2018
+    ATTRIBUTE133        
+    ATTRIBUTE134        
+    ATTRIBUTE135        
+    ATTRIBUTE136        
+    ATTRIBUTE137        
+    ATTRIBUTE138        
+    ATTRIBUTE139        
+    ATTRIBUTE14         
+    ATTRIBUTE140        
+    ATTRIBUTE141        
+    ATTRIBUTE142        
+    ATTRIBUTE143        
+    ATTRIBUTE144        
+    ATTRIBUTE145        
+    ATTRIBUTE146        
+    ATTRIBUTE147        
+    ATTRIBUTE148        
+    ATTRIBUTE15         
+    ATTRIBUTE16         
+    ATTRIBUTE17         
+    ATTRIBUTE18         X
+    ATTRIBUTE19         nein
+    ATTRIBUTE2          
+    ATTRIBUTE20         nein
+    ATTRIBUTE21         X
+    ATTRIBUTE22         
+    ATTRIBUTE23         
+    ATTRIBUTE24         X
+    ATTRIBUTE25         
+    ATTRIBUTE26         X
+    ATTRIBUTE27         
+    ATTRIBUTE28         X
+    ATTRIBUTE29         Kühlwasser RL
+    ATTRIBUTE3          
+    ATTRIBUTE32         6
+    ATTRIBUTE33         29
+    ATTRIBUTE34         
+    ATTRIBUTE35         
+    ATTRIBUTE37         TP210A
+    ATTRIBUTE38         Nur für neuen Rohrleitungsabschnitt gültig:
+    ATTRIBUTE39         Rohrklasse: D1CA1S; Kat.: §7 / Herst.
+    ATTRIBUTE40         Ausserbetriebnahme; Verschluss mit Blechplatte
+    ATTRIBUTE41         Korr.-schutz OMV-CS-1A; Isolierung: nein
+    ATTRIBUTE42         
+    ATTRIBUTE43         
+    ATTRIBUTE44         
+    ATTRIBUTE45         
+    ATTRIBUTE46         
+    ATTRIBUTE47         
+    ATTRIBUTE48         H00510-0050110-34
+    ATTRIBUTE50         550005
+    ATTRIBUTE54         29
+    ATTRIBUTE55         6
+    ATTRIBUTE56         9
+    ATTRIBUTE57         
+    ATTRIBUTE58         X
+    ATTRIBUTE59         
+    ATTRIBUTE60         
+    ATTRIBUTE61         
+    ATTRIBUTE62         
+    ATTRIBUTE63         
+    ATTRIBUTE64         Ausgabe
+    ATTRIBUTE65         Müller
+    ATTRIBUTE66         
+    ATTRIBUTE67         
+    ATTRIBUTE68         
+    ATTRIBUTE69         
+    ATTRIBUTE70         
+    ATTRIBUTE71         
+    ATTRIBUTE72         
+    ATTRIBUTE73         
+    ATTRIBUTE74         
+    ATTRIBUTE75         
+    ATTRIBUTE76         
+    ATTRIBUTE77         niedrig
+    ATTRIBUTE78         
+    ATTRIBUTE79         
+    ATTRIBUTE80         
+    ATTRIBUTE81         -
+    ATTRIBUTE82         
+    ATTRIBUTE83         
+    ATTRIBUTE84         -
+    ATTRIBUTE85         ja
+    ATTRIBUTE86         ja
+    ATTRIBUTE87         10704875
+    ATTRIBUTE9          
+    PIPING-SPEC         D1CA1S
+PIPE
+    COMPONENT-IDENTIFIER 1
+    END-POINT           500.0000      0.0000        0.0000 80.0000
+    END-POINT           0.0000        0.0000        0.0000 80.0000
+    MATERIAL-IDENTIFIER 1
+    UID                 5958AD63-95C0-45C8-8878-8ABAFA9890CE
+    CATEGORY            FABRICATION
+    MATERIAL-LIST       EXCLUDE
+    PIPING-SPEC         D1CA1S
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 4FB6FA9E-2F38-438B-A43F-A836BD32630E
+CAP
+    COMPONENT-IDENTIFIER 2
+    END-POINT           0.0000        0.0000        0.0000 80.0000
+    END-POINT           -6.0000       0.0000        0.0000 80.0000
+    SKEY                KABW
+    MATERIAL-IDENTIFIER 2
+    UID                 B65F675B-7928-438C-B528-DAF9DB00FF43
+    CATEGORY            FABRICATION
+    PIPING-SPEC         D1CA1S
+    UCI                 7CF9CEE9-A5DA-4AD9-ADBD-E2D606429316
+    WEIGHT              0.0000
+MESSAGE-CIRCLE
+    CO-ORDS             0.0000        0.0000        0.0000
+    STATUS              DIMENSIONED
+    TEXT                TP$210A
+MATERIALS
+MATERIAL-IDENTIFIER 1
+    ITEM-CODE PCAD_R1s
+    DESCRIPTION Rohr 88,9x4 
+MATERIAL-IDENTIFIER 2
+    ITEM-CODE SP_Platte
+    DESCRIPTION Blechscheibe s=6mm; Durchmesser 100mm

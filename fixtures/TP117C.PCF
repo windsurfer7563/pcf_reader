@@ -1,0 +1,278 @@
+ISOGEN-FILES            ISOGEN.FLS
+UNITS-BORE              INCH
+UNITS-CO-ORDS           MM
+UNITS-BOLT-LENGTH       MM
+UNITS-BOLT-DIA          MM
+UNITS-WEIGHT            KGS
+UID                     BC9E58A1-58F2-41B6-A2CA-A7B5F8E672E7
+PIPELINE-REFERENCE      TP117C
+    UID                 05684BCB-B7F7-41F4-9C3E-EDDC89FCD39B
+    AREA                1
+    ATTRIBUTE0          
+    ATTRIBUTE1          
+    ATTRIBUTE10         
+    ATTRIBUTE101        
+    ATTRIBUTE102        ISO 25-0040024-31311-73
+    ATTRIBUTE104        RAF-Schwechat
+    ATTRIBUTE106        550005
+    ATTRIBUTE107        H10-J148
+    ATTRIBUTE108        H10-F007
+    ATTRIBUTE109        5300420
+    ATTRIBUTE11         550005
+    ATTRIBUTE110        St 35
+    ATTRIBUTE111        25-0040024-31311-73
+    ATTRIBUTE112        Anlagengrenze KH
+    ATTRIBUTE116        ja
+    ATTRIBUTE117        nein
+    ATTRIBUTE118        2
+    ATTRIBUTE119        Wasser
+    ATTRIBUTE12         
+    ATTRIBUTE120        F1
+    ATTRIBUTE121        Hersteller
+    ATTRIBUTE122        -
+    ATTRIBUTE123        31311-73
+    ATTRIBUTE125        
+    ATTRIBUTE126        
+    ATTRIBUTE127        
+    ATTRIBUTE129        00
+    ATTRIBUTE13         
+    ATTRIBUTE130        Divoky
+    ATTRIBUTE131        Pörner
+    ATTRIBUTE132        16.05.2018
+    ATTRIBUTE133        
+    ATTRIBUTE134        
+    ATTRIBUTE135        
+    ATTRIBUTE136        
+    ATTRIBUTE137        
+    ATTRIBUTE138        
+    ATTRIBUTE139        
+    ATTRIBUTE14         
+    ATTRIBUTE140        
+    ATTRIBUTE141        
+    ATTRIBUTE142        
+    ATTRIBUTE143        
+    ATTRIBUTE144        
+    ATTRIBUTE145        
+    ATTRIBUTE146        
+    ATTRIBUTE147        
+    ATTRIBUTE148        
+    ATTRIBUTE15         
+    ATTRIBUTE16         
+    ATTRIBUTE17         
+    ATTRIBUTE18         X
+    ATTRIBUTE19         nein
+    ATTRIBUTE2          
+    ATTRIBUTE20         nein
+    ATTRIBUTE21         X
+    ATTRIBUTE22         
+    ATTRIBUTE23         
+    ATTRIBUTE24         X
+    ATTRIBUTE25         
+    ATTRIBUTE26         X
+    ATTRIBUTE27         
+    ATTRIBUTE28         X
+    ATTRIBUTE29         Slop
+    ATTRIBUTE3          
+    ATTRIBUTE32         0.49
+    ATTRIBUTE33         150
+    ATTRIBUTE34         
+    ATTRIBUTE35         
+    ATTRIBUTE37         TP117C; (PT=155bar)
+    ATTRIBUTE38         Nur für neuen Rohrleitungsabschnitt gültig:
+    ATTRIBUTE39         Rohrklasse: 06CA3S; Kat.: §7 / Herst.
+    ATTRIBUTE40         Blindflansch 1" / 600lbs/RTJ auf best. Armatur
+    ATTRIBUTE41         Korr.-schutz OMV-CS-1A; Isolierung: nein
+    ATTRIBUTE42         
+    ATTRIBUTE43         
+    ATTRIBUTE44         
+    ATTRIBUTE45         
+    ATTRIBUTE46         
+    ATTRIBUTE47         
+    ATTRIBUTE48         H00420-0040024-73
+    ATTRIBUTE50         550005
+    ATTRIBUTE54         150
+    ATTRIBUTE55         0.49
+    ATTRIBUTE56         2
+    ATTRIBUTE57         
+    ATTRIBUTE58         X
+    ATTRIBUTE59         
+    ATTRIBUTE60         
+    ATTRIBUTE61         
+    ATTRIBUTE62         
+    ATTRIBUTE63         
+    ATTRIBUTE64         Ausgabe
+    ATTRIBUTE65         Müller
+    ATTRIBUTE66         
+    ATTRIBUTE67         
+    ATTRIBUTE68         
+    ATTRIBUTE69         
+    ATTRIBUTE70         
+    ATTRIBUTE71         
+    ATTRIBUTE72         
+    ATTRIBUTE73         
+    ATTRIBUTE74         
+    ATTRIBUTE75         
+    ATTRIBUTE76         
+    ATTRIBUTE77         int
+    ATTRIBUTE78         
+    ATTRIBUTE79         
+    ATTRIBUTE80         
+    ATTRIBUTE81         -
+    ATTRIBUTE82         -
+    ATTRIBUTE83         
+    ATTRIBUTE84         -
+    ATTRIBUTE85         ja
+    ATTRIBUTE86         ja
+    ATTRIBUTE87         10704870
+    ATTRIBUTE9          
+    PIPING-SPEC         06CA3S
+FLANGE-BLIND
+    COMPONENT-IDENTIFIER 21
+    END-POINT           0.0000        436.5000      -138.0000 1.0000
+    END-POINT           0.0000        461.0000      -138.0000 1.0000
+    SKEY                FLBL
+    MATERIAL-IDENTIFIER 1
+    UID                 3134AF3F-32E7-4C7B-954F-2DFC4785551E
+    CATEGORY            FABRICATION
+    FLANGE-LEFT-LOOSE   OFF
+    PIPING-SPEC         06CA3S
+    UCI                 761DD5F4-E71C-497C-863C-256C6B61C1C6
+    WEIGHT              0.0000
+MESSAGE-CIRCLE
+    CO-ORDS             0.0000        461.0000      -138.0000
+    STATUS              DIMENSIONED
+    TEXT                TP$117C
+GASKET
+    COMPONENT-IDENTIFIER 19
+    END-POINT           0.0000        426.5000      -138.0000 1.0000
+    END-POINT           0.0000        436.5000      -138.0000 1.0000
+    MATERIAL-IDENTIFIER 2
+    UID                 4AE6164A-B5E8-4ADB-BDBC-EAE7A0EA547B
+    CATEGORY            FABRICATION
+    PIPING-SPEC         06CA3S
+    UCI                 C04A89E5-052B-45B9-9AA8-F19C5727991D
+    WEIGHT              0.0000
+VALVE
+    COMPONENT-IDENTIFIER 17
+    END-POINT           0.0000        210.5000      -138.0000 1.0000
+    END-POINT           0.0000        426.5000      -138.0000 1.0000
+    SKEY                VVFL
+    MATERIAL-IDENTIFIER 3
+    UID                 5EE29A8E-46A2-4849-91FD-1F0E1163BD0E
+    CATEGORY            ERECTION
+    MATERIAL-LIST       EXCLUDE
+    NAME                004AH2586
+    PIPING-SPEC         06CA3S
+    SPINDLE-DIRECTION   UP
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 6477EAAE-60E7-4E03-869C-251245CE4394
+BOLT
+    COMPONENT-IDENTIFIER 25
+    CO-ORDS             0.0000        210.5000      -138.0000
+    BOLT-DIA            15.88
+    BOLT-LENGTH         100
+    BOLT-QUANTITY       4
+    CATEGORY            ERECTION
+    MATERIAL-LIST       EXCLUDE
+    MATERIAL-IDENTIFIER 4
+    UID                 E9FF6A2C-DB58-4B4D-8774-D8F203AE9648
+    UCI                 010603EE-F543-4A97-8D66-21CFD533365C
+BOLT
+    COMPONENT-IDENTIFIER 26
+    CO-ORDS             0.0000        426.5000      -138.0000
+    BOLT-DIA            15.88
+    BOLT-LENGTH         100
+    BOLT-QUANTITY       4
+    CATEGORY            FABRICATION
+    MATERIAL-IDENTIFIER 4
+    UID                 21A19439-613F-498C-B133-F349B8BCA7E3
+    UCI                 719A9D93-002A-43DC-B550-D3CB1F3962A4
+GASKET
+    COMPONENT-IDENTIFIER 18
+    END-POINT           0.0000        207.0000      -138.0000 1.0000
+    END-POINT           0.0000        210.5000      -138.0000 1.0000
+    MATERIAL-IDENTIFIER 5
+    UID                 80E27F75-951F-4F90-A49D-3497655D43C1
+    CATEGORY            ERECTION
+    MATERIAL-LIST       EXCLUDE
+    PIPING-SPEC         06CA3S
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 EC18C156-ECE1-45BC-948E-7F4821ED8664
+FLANGE
+    COMPONENT-IDENTIFIER 20
+    END-POINT           0.0000        207.0000      -138.0000 1.0000
+    END-POINT           0.0000        138.0000      -138.0000 1.0000
+    SKEY                FLWN
+    MATERIAL-IDENTIFIER 6
+    UID                 385E2B63-B48A-4F83-A093-8386EBE87CAA
+    CATEGORY            FABRICATION
+    FLANGE-LEFT-LOOSE   OFF
+    MATERIAL-LIST       EXCLUDE
+    PIPING-SPEC         06CA3S
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 A8DE0670-5458-4009-A87E-9456DC5FA482
+PIPE
+    COMPONENT-IDENTIFIER 16
+    END-POINT           0.0000        38.0000       -138.0000 1.0000
+    END-POINT           0.0000        138.0000      -138.0000 1.0000
+    MATERIAL-IDENTIFIER 7
+    UID                 5013F414-2888-4027-8307-993BD2BF0872
+    CATEGORY            FABRICATION
+    MATERIAL-LIST       EXCLUDE
+    PIPING-SPEC         06CA3S
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 C83DC592-6057-4E50-BDF7-F003B1D74AAC
+ELBOW
+    COMPONENT-IDENTIFIER 23
+    END-POINT           0.0000        38.0000       -138.0000 1.0000 PL
+    END-POINT           0.0000        0.0000        -100.0000 1.0000 PL
+    CENTRE-POINT        0.0000        0.0000        -138.0000
+    SKEY                ELBW
+    MATERIAL-IDENTIFIER 8
+    ANGLE               9000
+    UID                 FE8C307C-2296-49FF-BE9D-707DBB1E7C5B
+    CATEGORY            FABRICATION
+    MATERIAL-LIST       EXCLUDE
+    PIPING-SPEC         06CA3S
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 FF21CED9-FE3E-45E8-8D2A-EBF6D2D20056
+PIPE
+    COMPONENT-IDENTIFIER 22
+    END-POINT           0.0000        0.0000        -100.0000 1.0000
+    END-POINT           0.0000        0.0000        0.0000 1.0000
+    MATERIAL-IDENTIFIER 7
+    UID                 8BCB714F-BB3D-478B-B28C-1A0CB4B71EC8
+    CATEGORY            FABRICATION
+    MATERIAL-LIST       EXCLUDE
+    PIPING-SPEC         06CA3S
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 BFF8F903-1572-4E35-8256-CEF51D880F39
+MESSAGE
+    CO-ORDS             0.0000        0.0000        0.0000
+    STATUS              DIMENSIONED
+    TEXT                Anschluss$F424B
+MATERIALS
+MATERIAL-IDENTIFIER 1
+    ITEM-CODE SP_FLBL-RTJ
+    DESCRIPTION Bl-Flansch 1"/600#/RTJ
+MATERIAL-IDENTIFIER 2
+    ITEM-CODE SP_GASK-R16
+    DESCRIPTION Oval Ring Joint Dichtung 1"/600#/RTJ
+MATERIAL-IDENTIFIER 3
+    ITEM-CODE VH06CAS
+    DESCRIPTION Schieber-k 600RF 1" 
+MATERIAL-IDENTIFIER 4
+    ITEM-CODE BNCT0.625x100
+    DESCRIPTION Schraubenbolzen 5/8"x100 
+MATERIAL-IDENTIFIER 5
+    ITEM-CODE GS06CL
+    DESCRIPTION Spiraldtg 600 1" 
+MATERIAL-IDENTIFIER 6
+    ITEM-CODE FW06CAS_16
+    DESCRIPTION V-Flansch 600RF 33,4x6,3 
+MATERIAL-IDENTIFIER 7
+    ITEM-CODE PCA_16
+    DESCRIPTION Rohr 33,4x6,3 
+MATERIAL-IDENTIFIER 8
+    ITEM-CODE ELCA_16
+    DESCRIPTION Bogen 90° LR 33,4x6,3 

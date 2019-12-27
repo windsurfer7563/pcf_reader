@@ -1,0 +1,241 @@
+ISOGEN-FILES            ISOGEN.FLS
+UNITS-BORE              MM
+UNITS-CO-ORDS           MM
+UNITS-BOLT-LENGTH       MM
+UNITS-BOLT-DIA          MM
+UNITS-WEIGHT            KGS
+UID                     3D6F0D89-CBE4-4F17-80CB-EDF7F2B5F612
+PIPELINE-REFERENCE      TP351B
+    UID                 BAF9460D-E560-4E46-A920-9824D52716D2
+    AREA                1
+    ATTRIBUTE0          
+    ATTRIBUTE1          
+    ATTRIBUTE10         
+    ATTRIBUTE101        
+    ATTRIBUTE102        ISO 40-0040155-BD31116B
+    ATTRIBUTE104        RAF-Schwechat
+    ATTRIBUTE106        550005
+    ATTRIBUTE107        H10-J354
+    ATTRIBUTE108        H10-F009
+    ATTRIBUTE109        5300420
+    ATTRIBUTE11         550005
+    ATTRIBUTE110        St 37
+    ATTRIBUTE111        Anlagengrenze KH
+    ATTRIBUTE112        40-0040155-BD31116B
+    ATTRIBUTE116        ja
+    ATTRIBUTE117        nein
+    ATTRIBUTE118        3.75
+    ATTRIBUTE119        Wasser
+    ATTRIBUTE12         
+    ATTRIBUTE120        G1
+    ATTRIBUTE121        TÜV
+    ATTRIBUTE122        -
+    ATTRIBUTE123        BD31116B
+    ATTRIBUTE125        
+    ATTRIBUTE126        
+    ATTRIBUTE127        
+    ATTRIBUTE129        00
+    ATTRIBUTE13         
+    ATTRIBUTE130        Divoky
+    ATTRIBUTE131        Pörner
+    ATTRIBUTE132        23.05.2018
+    ATTRIBUTE133        
+    ATTRIBUTE134        
+    ATTRIBUTE135        
+    ATTRIBUTE136        
+    ATTRIBUTE137        
+    ATTRIBUTE138        
+    ATTRIBUTE139        
+    ATTRIBUTE14         
+    ATTRIBUTE140        
+    ATTRIBUTE141        
+    ATTRIBUTE142        
+    ATTRIBUTE143        
+    ATTRIBUTE144        
+    ATTRIBUTE145        
+    ATTRIBUTE146        
+    ATTRIBUTE147        
+    ATTRIBUTE148        
+    ATTRIBUTE15         
+    ATTRIBUTE16         
+    ATTRIBUTE17         
+    ATTRIBUTE18         X
+    ATTRIBUTE19         nein
+    ATTRIBUTE2          
+    ATTRIBUTE20         nein
+    ATTRIBUTE21         X
+    ATTRIBUTE22         
+    ATTRIBUTE23         
+    ATTRIBUTE24         X
+    ATTRIBUTE25         
+    ATTRIBUTE26         X
+    ATTRIBUTE27         
+    ATTRIBUTE28         X
+    ATTRIBUTE29         Heizgas (Mischgas)
+    ATTRIBUTE3          
+    ATTRIBUTE32         2.5
+    ATTRIBUTE33         60
+    ATTRIBUTE34         
+    ATTRIBUTE35         
+    ATTRIBUTE37         TP351B; (PT=61bar)
+    ATTRIBUTE38         Nur für neuen Rohrleitungsabschnitt gültig:
+    ATTRIBUTE39         Rohrklasse: D4CA1S; Kat.: I / Herst.
+    ATTRIBUTE40         Blindflansch DN50 PN40 auf best. Armatur
+    ATTRIBUTE41         Korr.-schutz OMV-CS-1A; Isolierung: nein
+    ATTRIBUTE42         
+    ATTRIBUTE43         
+    ATTRIBUTE44         
+    ATTRIBUTE45         
+    ATTRIBUTE46         
+    ATTRIBUTE47         
+    ATTRIBUTE48         H00420-0040155-16
+    ATTRIBUTE50         550005
+    ATTRIBUTE54         60
+    ATTRIBUTE55         2.5
+    ATTRIBUTE56         3.75
+    ATTRIBUTE57         
+    ATTRIBUTE58         X
+    ATTRIBUTE59         
+    ATTRIBUTE60         
+    ATTRIBUTE61         
+    ATTRIBUTE62         
+    ATTRIBUTE63         
+    ATTRIBUTE64         Ausgabe
+    ATTRIBUTE65         Müller
+    ATTRIBUTE66         
+    ATTRIBUTE67         
+    ATTRIBUTE68         
+    ATTRIBUTE69         
+    ATTRIBUTE70         
+    ATTRIBUTE71         
+    ATTRIBUTE72         
+    ATTRIBUTE73         
+    ATTRIBUTE74         
+    ATTRIBUTE75         
+    ATTRIBUTE76         
+    ATTRIBUTE77         niedrig
+    ATTRIBUTE78         
+    ATTRIBUTE79         
+    ATTRIBUTE80         
+    ATTRIBUTE81         -
+    ATTRIBUTE82         -
+    ATTRIBUTE83         
+    ATTRIBUTE84         -
+    ATTRIBUTE85         ja
+    ATTRIBUTE86         ja
+    ATTRIBUTE87         10704815
+    ATTRIBUTE9          
+    PIPING-SPEC         D4CA1S
+PIPE
+    COMPONENT-IDENTIFIER 1
+    END-POINT           0.0000        0.0000        0.0000 50.0000
+    END-POINT           0.0000        0.0000        100.0000 50.0000
+    MATERIAL-IDENTIFIER 1
+    UID                 3952A4B2-5AFD-494A-B09E-93038B6569AA
+    CATEGORY            FABRICATION
+    MATERIAL-LIST       EXCLUDE
+    PIPING-SPEC         D4CA1S
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 2F025F9B-8B47-431A-9AF8-49EEB2F61CC1
+FLANGE
+    COMPONENT-IDENTIFIER 6
+    END-POINT           0.0000        0.0000        148.0000 50.0000
+    END-POINT           0.0000        0.0000        100.0000 50.0000
+    SKEY                FLWN
+    MATERIAL-IDENTIFIER 2
+    UID                 F4A3B9CC-60D5-427B-BC2D-45CAF5C010AB
+    CATEGORY            FABRICATION
+    FLANGE-LEFT-LOOSE   OFF
+    MATERIAL-LIST       EXCLUDE
+    PIPING-SPEC         D4CA1S
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 98BAF18D-A1C9-40F4-8097-7BE3F69986A0
+BOLT
+    COMPONENT-IDENTIFIER 8
+    CO-ORDS             0.0000        0.0000        148.0000
+    BOLT-DIA            15.88
+    BOLT-LENGTH         85
+    BOLT-QUANTITY       4
+    CATEGORY            ERECTION
+    MATERIAL-LIST       EXCLUDE
+    MATERIAL-IDENTIFIER 3
+    UID                 6634FC6A-B23F-4A44-ADAE-0BA6AAC30643
+    UCI                 EEB1B163-40E8-4769-8A3F-E2EF7ED23D94
+GASKET
+    COMPONENT-IDENTIFIER 4
+    END-POINT           0.0000        0.0000        148.0000 50.0000
+    END-POINT           0.0000        0.0000        151.5000 50.0000
+    MATERIAL-IDENTIFIER 4
+    UID                 35857CF7-85E1-4510-BECC-5C3A602B4E2B
+    CATEGORY            ERECTION
+    MATERIAL-LIST       EXCLUDE
+    PIPING-SPEC         D4CA1S
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 50DF715D-7DEA-4B4C-8223-795BAB5E24D0
+VALVE
+    COMPONENT-IDENTIFIER 2
+    END-POINT           0.0000        0.0000        151.5000 50.0000
+    END-POINT           0.0000        0.0000        401.5000 50.0000
+    SKEY                VVFL
+    MATERIAL-IDENTIFIER 5
+    UID                 E3702003-87AA-46FE-A748-0C262CE95229
+    CATEGORY            ERECTION
+    MATERIAL-LIST       EXCLUDE
+    NAME                004AH3883
+    PIPING-SPEC         D4CA1S
+    SPINDLE-DIRECTION   WEST
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 EC3C93F0-E4E3-483D-9B12-B4FEEA7AD9C8
+BOLT
+    COMPONENT-IDENTIFIER 9
+    CO-ORDS             0.0000        0.0000        401.5000
+    BOLT-DIA            15.88
+    BOLT-LENGTH         85
+    BOLT-QUANTITY       4
+    CATEGORY            FABRICATION
+    MATERIAL-IDENTIFIER 3
+    UID                 9E649069-CF0B-4E70-A6A8-013EC98EB95F
+    UCI                 70D5FFB5-2B4B-4ED6-A1B9-B8F846510554
+GASKET
+    COMPONENT-IDENTIFIER 5
+    END-POINT           0.0000        0.0000        401.5000 50.0000
+    END-POINT           0.0000        0.0000        405.0000 50.0000
+    MATERIAL-IDENTIFIER 4
+    UID                 1174E5B0-FAE7-43D0-B55D-F5247D504E0F
+    CATEGORY            FABRICATION
+    PIPING-SPEC         D4CA1S
+    UCI                 EB86651E-0FE8-41E0-9B63-B69343AD4E91
+FLANGE-BLIND
+    COMPONENT-IDENTIFIER 7
+    END-POINT           0.0000        0.0000        405.0000 50.0000
+    END-POINT           0.0000        0.0000        425.0000 50.0000
+    SKEY                FLBL
+    MATERIAL-IDENTIFIER 6
+    UID                 8B23B0FA-08E8-41C8-8505-AB8CD3788282
+    CATEGORY            FABRICATION
+    FLANGE-LEFT-LOOSE   OFF
+    PIPING-SPEC         D4CA1S
+    UCI                 E1D6BD7C-73F0-4602-8599-615867F47CAA
+MESSAGE-CIRCLE
+    CO-ORDS             0.0000        0.0000        425.0000
+    STATUS              DIMENSIONED
+    TEXT                TP$351B
+MATERIALS
+MATERIAL-IDENTIFIER 1
+    ITEM-CODE PCAD_R1s
+    DESCRIPTION Rohr 60,3x4 
+MATERIAL-IDENTIFIER 2
+    ITEM-CODE FVD4CAB1
+    DESCRIPTION V-Flansch PN40B1 60,3x4 
+MATERIAL-IDENTIFIER 3
+    ITEM-CODE BNCT0.625x85
+    DESCRIPTION Schraubenbolzen 5/8"x85 
+MATERIAL-IDENTIFIER 4
+    ITEM-CODE GSD4CL
+    DESCRIPTION Spiraldtg PN40 50 
+MATERIAL-IDENTIFIER 5
+    ITEM-CODE VGD4CAB1
+    DESCRIPTION AbspSchieber PN40B1 50 
+MATERIAL-IDENTIFIER 6
+    ITEM-CODE FBD4CAB1
+    DESCRIPTION Bl-Flansch PN40B1 50 

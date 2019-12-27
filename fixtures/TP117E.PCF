@@ -1,0 +1,244 @@
+ISOGEN-FILES            ISOGEN.FLS
+UNITS-BORE              INCH
+UNITS-CO-ORDS           MM
+UNITS-BOLT-LENGTH       MM
+UNITS-BOLT-DIA          MM
+UNITS-WEIGHT            KGS
+UID                     E5BEA25E-D754-454A-BF2F-42A3E8844C9C
+PIPELINE-REFERENCE      TP117E
+    UID                 D74DA37D-29A5-4B8B-8CF7-74D76129A588
+    AREA                1
+    ATTRIBUTE0          
+    ATTRIBUTE1          
+    ATTRIBUTE10         
+    ATTRIBUTE101        
+    ATTRIBUTE102        ISO 1"-04370-31724-86
+    ATTRIBUTE104        RAF-Schwechat
+    ATTRIBUTE106        550005
+    ATTRIBUTE107        H10-J150
+    ATTRIBUTE108        H10-F007
+    ATTRIBUTE109        5300430
+    ATTRIBUTE11         550005
+    ATTRIBUTE110        St 35
+    ATTRIBUTE111        12"-04102-36724-86
+    ATTRIBUTE112        25-04370-31311-73
+    ATTRIBUTE116        ja
+    ATTRIBUTE117        nein
+    ATTRIBUTE118        42
+    ATTRIBUTE119        Wasser
+    ATTRIBUTE12         
+    ATTRIBUTE120        G1
+    ATTRIBUTE121        TÜV
+    ATTRIBUTE122        -
+    ATTRIBUTE123        31724-86
+    ATTRIBUTE125        
+    ATTRIBUTE126        
+    ATTRIBUTE127        
+    ATTRIBUTE129        00
+    ATTRIBUTE13         
+    ATTRIBUTE130        Divoky
+    ATTRIBUTE131        Pörner
+    ATTRIBUTE132        16.05.2018
+    ATTRIBUTE133        
+    ATTRIBUTE134        
+    ATTRIBUTE135        
+    ATTRIBUTE136        
+    ATTRIBUTE137        
+    ATTRIBUTE138        
+    ATTRIBUTE139        
+    ATTRIBUTE14         
+    ATTRIBUTE140        
+    ATTRIBUTE141        
+    ATTRIBUTE142        
+    ATTRIBUTE143        
+    ATTRIBUTE144        
+    ATTRIBUTE145        
+    ATTRIBUTE146        
+    ATTRIBUTE147        
+    ATTRIBUTE148        
+    ATTRIBUTE15         
+    ATTRIBUTE16         
+    ATTRIBUTE17         
+    ATTRIBUTE18         X
+    ATTRIBUTE19         nein
+    ATTRIBUTE2          
+    ATTRIBUTE20         nein
+    ATTRIBUTE21         X
+    ATTRIBUTE22         
+    ATTRIBUTE23         
+    ATTRIBUTE24         X
+    ATTRIBUTE25         
+    ATTRIBUTE26         X
+    ATTRIBUTE27         
+    ATTRIBUTE28         X
+    ATTRIBUTE29         H2
+    ATTRIBUTE3          
+    ATTRIBUTE32         28
+    ATTRIBUTE33         121
+    ATTRIBUTE34         
+    ATTRIBUTE35         
+    ATTRIBUTE37         TP117E; (PT=155bar)
+    ATTRIBUTE38         Nur für neuen Rohrleitungsabschnitt gültig:
+    ATTRIBUTE39         Rohrklasse: 06CA3S; Kat.: §7 / Herst.
+    ATTRIBUTE40         Blindflansch 3/4" / 600lbs/RTJ auf best. Armatur
+    ATTRIBUTE41         Korr.-schutz OMV-CS-1A; Isolierung: nein
+    ATTRIBUTE42         
+    ATTRIBUTE43         
+    ATTRIBUTE44         
+    ATTRIBUTE45         
+    ATTRIBUTE46         
+    ATTRIBUTE47         
+    ATTRIBUTE48         H00430-04370-86
+    ATTRIBUTE50         550005
+    ATTRIBUTE54         121
+    ATTRIBUTE55         28
+    ATTRIBUTE56         42
+    ATTRIBUTE57         
+    ATTRIBUTE58         X
+    ATTRIBUTE59         
+    ATTRIBUTE60         
+    ATTRIBUTE61         
+    ATTRIBUTE62         
+    ATTRIBUTE63         
+    ATTRIBUTE64         Ausgabe
+    ATTRIBUTE65         Müller
+    ATTRIBUTE66         
+    ATTRIBUTE67         
+    ATTRIBUTE68         
+    ATTRIBUTE69         
+    ATTRIBUTE70         
+    ATTRIBUTE71         
+    ATTRIBUTE72         
+    ATTRIBUTE73         
+    ATTRIBUTE74         
+    ATTRIBUTE75         
+    ATTRIBUTE76         
+    ATTRIBUTE77         niedrig
+    ATTRIBUTE78         
+    ATTRIBUTE79         
+    ATTRIBUTE80         
+    ATTRIBUTE81         -
+    ATTRIBUTE82         -
+    ATTRIBUTE83         
+    ATTRIBUTE84         -
+    ATTRIBUTE85         ja
+    ATTRIBUTE86         ja
+    ATTRIBUTE87         10704855
+    ATTRIBUTE9          
+    PIPING-SPEC         06CA3S
+PIPE
+    COMPONENT-IDENTIFIER 14
+    END-POINT           0.0000        0.0000        0.0000 0.7500
+    END-POINT           0.0000        0.0000        -100.0000 0.7500
+    MATERIAL-IDENTIFIER 1
+    UID                 2682BEFE-A124-4346-811F-07A015958DDC
+    CATEGORY            FABRICATION
+    MATERIAL-LIST       EXCLUDE
+    PIPING-SPEC         06CA3S
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 9B95A9FE-9E74-4EB4-82DE-4C56DBD6B1EB
+FLANGE
+    COMPONENT-IDENTIFIER 19
+    END-POINT           0.0000        0.0000        -164.0000 0.7500
+    END-POINT           0.0000        0.0000        -100.0000 0.7500
+    SKEY                FLWN
+    MATERIAL-IDENTIFIER 2
+    UID                 F7049ED5-FB94-434F-B912-56D8E041B77F
+    CATEGORY            FABRICATION
+    FLANGE-LEFT-LOOSE   OFF
+    MATERIAL-LIST       EXCLUDE
+    PIPING-SPEC         06CA3S
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 61C8211F-1E30-44AA-BAD7-FCB15872AAB2
+BOLT
+    COMPONENT-IDENTIFIER 21
+    CO-ORDS             0.0000        0.0000        -164.0000
+    BOLT-DIA            15.88
+    BOLT-LENGTH         90
+    BOLT-QUANTITY       4
+    CATEGORY            FABRICATION
+    MATERIAL-LIST       EXCLUDE
+    MATERIAL-IDENTIFIER 3
+    UID                 BF2060EB-71F5-4DC8-8532-FCF949B32929
+    UCI                 403F122F-8619-49C6-9F84-56842508D726
+GASKET
+    COMPONENT-IDENTIFIER 18
+    END-POINT           0.0000        0.0000        -164.0000 0.7500
+    END-POINT           0.0000        0.0000        -174.0000 0.7500
+    MATERIAL-IDENTIFIER 4
+    UID                 7CAF1156-E917-4E33-8131-0A80EED94076
+    CATEGORY            ERECTION
+    MATERIAL-LIST       EXCLUDE
+    PIPING-SPEC         06CA3S
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 84F07A0A-8C0E-45BD-9C58-94FC396ED273
+    WEIGHT              0.0000
+VALVE
+    COMPONENT-IDENTIFIER 15
+    END-POINT           0.0000        0.0000        -174.0000 0.7500
+    END-POINT           0.0000        0.0000        -364.0000 0.7500
+    SKEY                VVFL
+    MATERIAL-IDENTIFIER 5
+    UID                 736A8F07-99AF-4B2C-AF48-3ACBACBFBC62
+    CATEGORY            ERECTION
+    MATERIAL-LIST       EXCLUDE
+    NAME                004AH3540
+    PIPING-SPEC         06CA3S
+    SPINDLE-DIRECTION   WEST
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 C3990720-085E-43A3-8E88-C8A7D99418BC
+GASKET
+    COMPONENT-IDENTIFIER 16
+    END-POINT           0.0000        0.0000        -364.0000 0.7500
+    END-POINT           0.0000        0.0000        -374.0000 0.7500
+    MATERIAL-IDENTIFIER 4
+    UID                 9D327219-BE76-453C-8764-702EFF71B7F8
+    CATEGORY            FABRICATION
+    PIPING-SPEC         06CA3S
+    UCI                 67636FBC-3EC8-4C73-BC30-25831B945C19
+    WEIGHT              0.0000
+FLANGE-BLIND
+    COMPONENT-IDENTIFIER 17
+    END-POINT           0.0000        0.0000        -374.0000 0.7500
+    END-POINT           0.0000        0.0000        -396.9000 0.7500
+    SKEY                FLBL
+    MATERIAL-IDENTIFIER 6
+    UID                 C63B8833-2153-4781-8CDC-32D8881C114D
+    CATEGORY            FABRICATION
+    FLANGE-LEFT-LOOSE   OFF
+    PIPING-SPEC         06CA3S
+    UCI                 E9D9994E-6DA7-4C7D-B277-4BDDECE887C9
+    WEIGHT              0.0000
+MESSAGE-CIRCLE
+    CO-ORDS             0.0000        0.0000        -374.0000
+    STATUS              DIMENSIONED
+    TEXT                TP$117E
+BOLT
+    COMPONENT-IDENTIFIER 20
+    CO-ORDS             0.0000        0.0000        -374.0000
+    BOLT-DIA            15.88
+    BOLT-LENGTH         90
+    BOLT-QUANTITY       4
+    CATEGORY            FABRICATION
+    MATERIAL-IDENTIFIER 3
+    UID                 226CDF61-6CE1-4A5F-AE3A-4F8F818A5D3E
+    UCI                 926AEB4B-6411-47DB-86CA-1D36C0B58525
+MATERIALS
+MATERIAL-IDENTIFIER 1
+    ITEM-CODE PCA_16
+    DESCRIPTION Rohr 26,7x5,5 
+MATERIAL-IDENTIFIER 2
+    ITEM-CODE FW06CAS_16
+    DESCRIPTION V-Flansch 600RF 26,7x5,5 
+MATERIAL-IDENTIFIER 3
+    ITEM-CODE BNCT0.625x90
+    DESCRIPTION Schraubenbolzen 5/8"x90 
+MATERIAL-IDENTIFIER 4
+    ITEM-CODE SP_GASK-R13
+    DESCRIPTION Oval Ring Joint Dichtung 3/4"/600#/RTJ
+MATERIAL-IDENTIFIER 5
+    ITEM-CODE VH06CAS
+    DESCRIPTION Schieber-k 600RF 3/4" 
+MATERIAL-IDENTIFIER 6
+    ITEM-CODE SP_FLBL-RTJ
+    DESCRIPTION Bl-Flansch 3/4"/600#/RTJ

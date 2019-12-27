@@ -1,0 +1,213 @@
+ISOGEN-FILES            ISOGEN.FLS
+UNITS-BORE              MM
+UNITS-CO-ORDS           MM
+UNITS-BOLT-LENGTH       MM
+UNITS-BOLT-DIA          MM
+UNITS-WEIGHT            KGS
+UID                     4EF1996A-3C21-4D42-8DC9-3504B5C23583
+PIPELINE-REFERENCE      TP157A
+    UID                 5A49C9FA-4D74-4C5E-93C6-B8527129B81B
+    AREA                1
+    ATTRIBUTE0          
+    ATTRIBUTE1          
+    ATTRIBUTE10         
+    ATTRIBUTE101        
+    ATTRIBUTE102        ISO 100-042441-HD31173B
+    ATTRIBUTE104        RAF-Schwechat
+    ATTRIBUTE106        550005
+    ATTRIBUTE107        H10-J178
+    ATTRIBUTE108        H10-F313
+    ATTRIBUTE109        5300430
+    ATTRIBUTE11         550005
+    ATTRIBUTE110        1.4571
+    ATTRIBUTE111        1"-042155-AJ72113C
+    ATTRIBUTE112        F420
+    ATTRIBUTE116        ja
+    ATTRIBUTE117        nein
+    ATTRIBUTE118        4.5
+    ATTRIBUTE119        Wasser
+    ATTRIBUTE12         
+    ATTRIBUTE120        F1
+    ATTRIBUTE121        TÜV
+    ATTRIBUTE122        -
+    ATTRIBUTE123        HD31173B
+    ATTRIBUTE125        
+    ATTRIBUTE126        
+    ATTRIBUTE127        
+    ATTRIBUTE129        00
+    ATTRIBUTE13         
+    ATTRIBUTE130        Divoky
+    ATTRIBUTE131        Pörner
+    ATTRIBUTE132        22.05.2018
+    ATTRIBUTE133        
+    ATTRIBUTE134        
+    ATTRIBUTE135        
+    ATTRIBUTE136        
+    ATTRIBUTE137        
+    ATTRIBUTE138        
+    ATTRIBUTE139        
+    ATTRIBUTE14         
+    ATTRIBUTE140        
+    ATTRIBUTE141        
+    ATTRIBUTE142        
+    ATTRIBUTE143        
+    ATTRIBUTE144        
+    ATTRIBUTE145        
+    ATTRIBUTE146        
+    ATTRIBUTE147        
+    ATTRIBUTE148        
+    ATTRIBUTE15         
+    ATTRIBUTE16         
+    ATTRIBUTE17         
+    ATTRIBUTE18         X
+    ATTRIBUTE19         nein
+    ATTRIBUTE2          
+    ATTRIBUTE20         nein
+    ATTRIBUTE21         X
+    ATTRIBUTE22         
+    ATTRIBUTE23         
+    ATTRIBUTE24         X
+    ATTRIBUTE25         
+    ATTRIBUTE26         X
+    ATTRIBUTE27         
+    ATTRIBUTE28         X
+    ATTRIBUTE29         Slop
+    ATTRIBUTE3          
+    ATTRIBUTE32         3
+    ATTRIBUTE33         50
+    ATTRIBUTE34         
+    ATTRIBUTE35         
+    ATTRIBUTE37         TP157A; (PT=25bar)
+    ATTRIBUTE38         Nur für neuen Rohrleitungsabschnitt gültig:
+    ATTRIBUTE39         Rohrklasse: D2CA1S; Kat.: I / Herst.
+    ATTRIBUTE40         Blindflansch DN150 PN16 auf best. V-Flan.
+    ATTRIBUTE41         Korr.-schutz nein; Isolierung: nein
+    ATTRIBUTE42         
+    ATTRIBUTE43         
+    ATTRIBUTE44         
+    ATTRIBUTE45         
+    ATTRIBUTE46         
+    ATTRIBUTE47         
+    ATTRIBUTE48         H00430-042441-73
+    ATTRIBUTE50         550005
+    ATTRIBUTE54         50
+    ATTRIBUTE55         3
+    ATTRIBUTE56         4.5
+    ATTRIBUTE57         
+    ATTRIBUTE58         X
+    ATTRIBUTE59         
+    ATTRIBUTE60         
+    ATTRIBUTE61         
+    ATTRIBUTE62         
+    ATTRIBUTE63         
+    ATTRIBUTE64         Ausgabe
+    ATTRIBUTE65         Müller
+    ATTRIBUTE66         
+    ATTRIBUTE67         
+    ATTRIBUTE68         
+    ATTRIBUTE69         
+    ATTRIBUTE70         
+    ATTRIBUTE71         
+    ATTRIBUTE72         
+    ATTRIBUTE73         
+    ATTRIBUTE74         
+    ATTRIBUTE75         
+    ATTRIBUTE76         
+    ATTRIBUTE77         niedrig
+    ATTRIBUTE78         
+    ATTRIBUTE79         
+    ATTRIBUTE80         
+    ATTRIBUTE81         -
+    ATTRIBUTE82         -
+    ATTRIBUTE83         
+    ATTRIBUTE84         -
+    ATTRIBUTE85         ja
+    ATTRIBUTE86         ja
+    ATTRIBUTE87         10704841
+    ATTRIBUTE9          
+    PIPING-SPEC         D2CA1S
+PIPE
+    COMPONENT-IDENTIFIER 16
+    END-POINT           0.0000        0.0000        0.0000 150.0000
+    END-POINT           0.0000        0.0000        100.0000 150.0000
+    MATERIAL-IDENTIFIER 1
+    UID                 56150D13-1457-4B13-B79F-63A7C0959008
+    CATEGORY            FABRICATION
+    MATERIAL-LIST       EXCLUDE
+    PIPING-SPEC         D2CA1S
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 0B520C7C-FB72-46CF-9E10-90C915DD2C4D
+FLOOR-SYMBOL
+    COMPONENT-IDENTIFIER 29
+    CO-ORDS             0.0000        0.0000        100.0000 150.0000
+    SKEY                FLOR
+    MATERIAL-IDENTIFIER 2
+    UID                 338CD22E-F6F9-4B6D-8EA5-C763E9A42B92
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 90ADD081-9712-4266-87E7-03230B0EF306
+FLANGE
+    COMPONENT-IDENTIFIER 19
+    END-POINT           0.0000        0.0000        155.0000 150.0000
+    END-POINT           0.0000        0.0000        100.0000 150.0000
+    SKEY                FLWN
+    MATERIAL-IDENTIFIER 3
+    UID                 C4886902-9767-4815-80BE-D10023DB2FC9
+    CATEGORY            FABRICATION
+    FLANGE-LEFT-LOOSE   OFF
+    MATERIAL-LIST       EXCLUDE
+    PIPING-SPEC         D2CA1S
+    STATUS              DOTTED-UNDIMENSIONED
+    UCI                 42325142-E371-4B01-A90D-E593D2688D17
+BOLT
+    COMPONENT-IDENTIFIER 28
+    CO-ORDS             0.0000        0.0000        155.0000
+    BOLT-DIA            19.05
+    BOLT-LENGTH         100
+    BOLT-QUANTITY       8
+    CATEGORY            FABRICATION
+    MATERIAL-IDENTIFIER 4
+    UID                 D71E08B4-1FBB-4F8E-8197-0F4DB027F863
+    UCI                 5840D462-0EFD-497D-A585-FC00CAFFF807
+GASKET
+    COMPONENT-IDENTIFIER 20
+    END-POINT           0.0000        0.0000        155.0000 150.0000
+    END-POINT           0.0000        0.0000        158.5000 150.0000
+    MATERIAL-IDENTIFIER 5
+    UID                 2B987743-2722-4960-A133-DF47237802CB
+    CATEGORY            FABRICATION
+    PIPING-SPEC         D2CA1S
+    UCI                 625D93DA-A0F0-42F3-9F30-E660022CFAA6
+FLANGE-BLIND
+    COMPONENT-IDENTIFIER 21
+    END-POINT           0.0000        0.0000        158.5000 150.0000
+    END-POINT           0.0000        0.0000        180.5000 150.0000
+    SKEY                FLBL
+    MATERIAL-IDENTIFIER 6
+    UID                 22DBBA56-4D52-4565-A062-C4D6B7DE2188
+    CATEGORY            FABRICATION
+    FLANGE-LEFT-LOOSE   OFF
+    PIPING-SPEC         D2CA1S
+    UCI                 16D41367-034A-405F-AFB3-743C71BA5BAA
+MESSAGE-CIRCLE
+    CO-ORDS             0.0000        0.0000        180.5000
+    STATUS              DIMENSIONED
+    TEXT                TP$157A
+MATERIALS
+MATERIAL-IDENTIFIER 1
+    ITEM-CODE PCAD_R1s
+    DESCRIPTION Rohr 168,3x4 
+MATERIAL-IDENTIFIER 2
+    ITEM-CODE G_Floor-Symbol_0
+    DESCRIPTION Floor Symbol
+MATERIAL-IDENTIFIER 3
+    ITEM-CODE FVD2CAB1
+    DESCRIPTION V-Flansch PN16B1 168,3x4 
+MATERIAL-IDENTIFIER 4
+    ITEM-CODE BNCT0.75x100
+    DESCRIPTION Schraubenbolzen 3/4"x100 
+MATERIAL-IDENTIFIER 5
+    ITEM-CODE GSD2CL
+    DESCRIPTION Spiraldtg PN16 150 
+MATERIAL-IDENTIFIER 6
+    ITEM-CODE FBD2CAB1
+    DESCRIPTION Bl-Flansch PN16B1 150 

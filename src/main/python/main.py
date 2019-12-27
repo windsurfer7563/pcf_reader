@@ -110,6 +110,8 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
             
             if self.config.use_aggregation:
                 self.row_data_df = self.group_values(df)
+            else:
+                self.row_data_df = df
 
             self.df = self.final_formatting(self.row_data_df)
            
@@ -218,12 +220,12 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
         pipeline_values['PIPELINE-REFERENCE'] = elements[0]['value']
         
         pipeline_values["PIPING-SPEC"] = elements[0]["inner_values"]["PIPING-SPEC"]
-        '''
-        pipeline_attributes = set(elements[0]["inner_values"].keys()) & set(self.config.column_names.values()) 
+        
+        pipeline_attributes = set(elements[0]["inner_values"].keys()) & set(self.config.column_names.values()) & set(self.config.pipeline_sections)
         for name in pipeline_attributes:
             if name in elements[0]["inner_values"].keys():
                 pipeline_values[name] = elements[0]["inner_values"][name]
-        '''
+        
         return pipeline_values
 
     def get_elements_by_section_name(self, section_name):
@@ -324,7 +326,7 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
         if coord_name == "Y": return l[1]
         if coord_name == "Z": return l[2]
         if coord_name == "DN":
-            if len(l) == 4:
+            if len(l) >= 4:
                 return l[3]
             
         return ""
@@ -370,8 +372,11 @@ class AppContext(ApplicationContext):           # 1. Subclass ApplicationContext
 
 
     def group_values(self, df):
+        df = df.fillna("")
         group_by_columns = [c for c in self.config.group_by if c in df.columns]
-        reduced_columns = group_by_columns + list(set(self.config.aggregate_by) & set(df.columns)) 
+        reduced_columns = group_by_columns + list(set(self.config.aggregate_by) & set(df.columns))
+        #print(group_by_columns)
+        #print(reduced_columns) 
         groupped = df.loc[:,reduced_columns].groupby(by = group_by_columns, sort = False, as_index  = False).sum()
         return groupped
 
